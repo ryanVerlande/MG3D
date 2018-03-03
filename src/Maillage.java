@@ -10,7 +10,7 @@ public class Maillage {
     private ArrayList<Face> fListe;
 	
     /**
-     * Constructeur par defaut d'un maillage.
+     * Constructeur par défaut d'un maillage.
      */
     public Maillage(){
 	sListe = new ArrayList<>();
