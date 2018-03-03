@@ -36,14 +36,14 @@ public class Parallelepipede {
 
 	// TODO - vérifier que tailleX, tailleY et tailleZ > 0
 	
-	add(new Sommet(origine.getX(), origine.getY(), origine.getZ()));
-	add(new Sommet(origine.getX()+tailleX, origine.getY(), origine.getZ()));
-	add(new Sommet(origine.getX(), origine.getY()+tailleY, origine.getZ()));
-	add(new Sommet(origine.getX()+tailleX, origine.getY()+tailleY, origine.getZ()));
-	add(new Sommet(origine.getX(), origine.getY(), origine.getZ()+tailleZ));
-	add(new Sommet(origine.getX()+tailleX, origine.getY(), origine.getZ()+tailleZ));
-	add(new Sommet(origine.getX(), origine.getY()+tailleY, origine.getZ()+tailleZ));
-	add(new Sommet(origine.getX()+tailleX, origine.getY()+tailleY, origine.getZ()+tailleZ));
+	add(new Sommet(0, 0, 0));
+	add(new Sommet(tailleX, 0, 0));
+	add(new Sommet(0, tailleY, 0));
+	add(new Sommet(tailleX, tailleY, 0));
+	add(new Sommet(0, 0, tailleZ));
+	add(new Sommet(tailleX, 0, tailleZ));
+	add(new Sommet(0, tailleY, tailleZ));
+	add(new Sommet(tailleX, tailleY, tailleZ));
 		
 	add(new Face(3, 1, 0));
 	add(new Face(2, 3, 0));
@@ -57,5 +57,7 @@ public class Parallelepipede {
 	add(new Face(3, 2, 6));
 	add(new Face(1, 5, 0));
 	add(new Face(4, 0, 5));
+
+	translater(origine.getX(),origine.getY(),origine.getZ());
     }
 }

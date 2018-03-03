@@ -1,4 +1,4 @@
 
-public class Cylindre {
+class Cylindre extends Maillage{
 
 }
