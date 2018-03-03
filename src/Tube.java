@@ -1,0 +1,2 @@
+class Tube extends Maillage{
+}

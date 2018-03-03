@@ -1,0 +1,2 @@
+class Pyramide extends Maillage{
+}

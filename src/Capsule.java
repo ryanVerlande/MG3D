@@ -1,0 +1,2 @@
+class Capsule extends Maillage{
+}
