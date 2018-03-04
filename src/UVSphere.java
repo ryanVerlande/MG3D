@@ -1,4 +1,4 @@
 
-public class UVSphere {
+class UVSphere extends Maillage{
 
 }

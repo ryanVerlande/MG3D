@@ -1,5 +1,5 @@
 
-public class IcoSphere extends Maillage{
+class IcoSphere extends Maillage{
 
     public IcoSphere(){
 	super();

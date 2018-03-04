@@ -1,5 +1,5 @@
 
-public class Point3D {
+class Point3D {
 // ATTRIBUTS
 	private double x; // abscisse
 	private double y; // ordonnee

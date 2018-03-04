@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Maillage {
+class Maillage {
 	
     //Attributs
     private ArrayList<Sommet> sListe;

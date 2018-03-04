@@ -1,5 +1,5 @@
 
-public class Cube extends Parallelepipede {
+class Cube extends Parallelepipede {
 
     public Cube(){
 	super(new Point3D(0,0,0),1,1,1);

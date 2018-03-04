@@ -41,7 +41,7 @@ import javax.swing.JPanel;
  * @see Fenetre
  * @see Maillage
  */
-public class Panneau extends JPanel {
+class Panneau extends JPanel {
 	
     // Attribut //
 	

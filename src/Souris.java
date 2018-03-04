@@ -37,7 +37,7 @@ import java.awt.event.MouseMotionListener;
  * @version 2.2
  */
 
-public class Souris implements MouseListener, MouseMotionListener {
+class Souris implements MouseListener, MouseMotionListener {
     
     // Attributs //
     

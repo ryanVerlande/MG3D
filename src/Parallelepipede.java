@@ -1,5 +1,4 @@
-
-public class Parallelepipede {
+class Parallelepipede extends Maillage{
 
     /**
      * Création d'un parallélépipède par défaut.<br />

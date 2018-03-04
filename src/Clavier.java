@@ -38,7 +38,7 @@ import java.awt.event.KeyListener;
  * @author Equipe 2D, Rémi Synave
  * @version 2.2
  */
-public class Clavier implements KeyListener {
+class Clavier implements KeyListener {
 
     // Attributs //
 	

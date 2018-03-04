@@ -1,5 +1,5 @@
 
-public class Face {
+class Face {
 	
 	// Attributs
 	private int s1; // indice 0

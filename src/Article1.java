@@ -18,7 +18,7 @@ import com.jogamp.opengl.util.FPSAnimator;
  *
  */
  
-public class Article1 implements GLEventListener {
+class Article1 implements GLEventListener {
  
     public static void main(String[] args) {
         /**

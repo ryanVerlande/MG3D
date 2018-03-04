@@ -48,7 +48,7 @@ import java.awt.GraphicsEnvironment;
  * @author Equipe 2D, Rémi Synave
  * @version 2.2
  */
-public class Fenetre extends JFrame {
+class Fenetre extends JFrame {
 
     // Attributs //
 
