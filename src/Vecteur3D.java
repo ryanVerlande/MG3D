@@ -1,43 +1,43 @@
-class Vecteur3D{
+class Vecteur3D {
 
-    prinvate double dx, dy, dz;
-    
-    public Vecteur3D(){
-	dx=1.0;
-	dy=0.0;
-	dz=0.0;
-    }
+	private double dx, dy, dz;
 
-    public Vecteur3D(double ddx, double ddy, double ddz){
-	dx=ddx;
-	dy=ddy;
-	dz=ddz;
-    }
+	public Vecteur3D() {
+		dx = 1.0;
+		dy = 0.0;
+		dz = 0.0;
+	}
 
-    public double taille(){
-	return Math.sqrt(dx*dx+dy*dy+dz*dz);
-    }
+	public Vecteur3D(double ddx, double ddy, double ddz) {
+		dx = ddx;
+		dy = ddy;
+		dz = ddz;
+	}
 
-    public void normaliser(){
-	double taille=taille();
-	if(taille==0.0)
-	    throw new java.lang.RuntimeException("Impossible de normaliser le vecteur nul");
+	public double taille() {
+		return Math.sqrt(dx * dx + dy * dy + dz * dz);
+	}
 
-	dx/=taille;
-	dy/=taille;
-	dz/=taille;
-    }
+	public void normaliser() {
+		double taille = taille();
+		if (taille == 0.0)
+			throw new java.lang.RuntimeException("Impossible de normaliser le vecteur nul");
 
-    public double getDx(){
-	return dx;
-    }
+		dx /= taille;
+		dy /= taille;
+		dz /= taille;
+	}
 
-    public double getDy(){
-	return dy;
-    }
+	public double getDx() {
+		return dx;
+	}
 
-    public double getDz(){
-	return dz;
-    }
-    
+	public double getDy() {
+		return dy;
+	}
+
+	public double getDz() {
+		return dz;
+	}
+
 }
