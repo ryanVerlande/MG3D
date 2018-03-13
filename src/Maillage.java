@@ -6,15 +6,14 @@ import java.util.Scanner;
 class Maillage {
 	
     //Attributs
-    private ArrayList<Sommet> sListe;
-    private ArrayList<Face> fListe;
+    String fichier;
 	
     /**
      * Constructeur par défaut d'un maillage.
      */
     public Maillage(){
-	sListe = new ArrayList<>();
-	fListe = new ArrayList<>();
+	super();
+	fichier=new String();
     }
 	
     /**
@@ -25,19 +24,24 @@ class Maillage {
      * @throws IOException
      */
     public Maillage(String str) {
-	sListe = new ArrayList<>();
-	fListe = new ArrayList<>();
+	super();
+	fichier=new String(str);
+	genereMaillage();
+    }
+
+    protected void genereMaillage(){
+	
 	Scanner sc = null;
-		
+	
 	// Lecture du fichier
 	try{
-	    sc = new Scanner(new File(str));
+	    sc = new Scanner(new File(fichier));
 	}catch(IOException e){
 	    System.out.println("Fichier non trouve dans le repertoire suivant le chemin : "+str+"!");
 	}
-		
+	
 	sc.next(); // on passe le OFF du fichier
-		
+	
 	// Recuperation du nombre de sommets, de faces et d'aretes
 	int nbSommets = Integer.valueOf(sc.next());
 	int nbFaces = Integer.valueOf(sc.next());
