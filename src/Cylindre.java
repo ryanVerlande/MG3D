@@ -1,18 +1,23 @@
 
 class Cylindre extends Objet3D{
+
+    private Point3D centre;
+    private double diametre, hauteur;
 	
-	public Cylindre(){
-		super();
-	}
+    public Cylindre(){
+	super();
+    }
 	
-	public Cylindre(Point3D centre, double diametre, double hauteur){
-		super();
+    public Cylindre(Point3D ccentre, double ddiametre, double hhauteur){
+	super();
 		
-	}
+    }
 	
-	public Cylindre(Cylindre c){
-		super(c);
-	}
-	
+    public Cylindre(Cylindre c){
+	super();
+    }
+
+    protected void genereMaillage(){
+    }
 	
 }
