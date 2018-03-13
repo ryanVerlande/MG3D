@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Maillage {
+class Maillage extends Objet3D{
 	
     //Attributs
     String fichier;
@@ -78,31 +78,12 @@ class Maillage {
 	m.fListe = fListe;
 	m.sListe = sListe;
     }
-	
-    /**
-     * Ajoute un sommet a la liste de sommet
-     * @param s le sommet a ajouter
-     */
-    public void add(Sommet s){
-	sListe.add(s);
-    }
-	
-    /**
-     * Ajoute une face a la liste de face
-     * @param f la face a ajouter
-     */
-    public void add(Face f){
-	if ( (f.getS1() <= sListe.size() ) && (f.getS2() <= sListe.size() ) && (f.getS3() <= sListe.size() ) ){
-	    fListe.add(f);
-	}else{
-	    System.out.println("Ajout impossible, l'indice de sommet n'existe pas !");
-	}
-    }
-	
+
+    
     /**
      * Cette methode affiche la liste de sommets et de faces constituant le maillage
      */
-    public void affichageParListe(){
+    /*public void affichageParListe(){
 	System.out.println("Sommets : ");
 	for ( int i = 0; i < sListe.size(); i++ ){
 	    System.out.println(i+" - "+sListe.get(i));
@@ -111,23 +92,23 @@ class Maillage {
 	for ( int i = 0; i < fListe.size(); i++ ){
 	    System.out.println(i+" - "+fListe.get(i));
 	}
-    }
+	}*/
 	
     /**
      * Cette methode affiche l’ensemble des faces sous la forme de 3×3 coordonnees (x,y,z)
      */
-    public void affichageSoupePolygone(){
+    /*public void affichageSoupePolygone(){
 	System.out.println("Soupe : ");
 	for ( int i = 0; i < fListe.size(); i++){
 	    System.out.println(i+" : "+sListe.get(fListe.get(i).getS1()) +"-"+sListe.get(fListe.get(i).getS2())+
 			       "-"+sListe.get(fListe.get(i).getS3()) );
 	}
-    }
+	}*/
 	
     /**
      *  Cette methode affiche la boite englobante (alignee selon les axes).
      */
-    public void afficheBB(){
+    /*public void afficheBB(){
 	double maxX = sListe.get(0).getX(), maxY = sListe.get(0).getY(), maxZ = sListe.get(0).getZ();
 	double minX = sListe.get(0).getX(), minY = sListe.get(0).getY(), minZ = sListe.get(0).getZ();
 	for ( int i = 0; i < sListe.size(); i++ ){
@@ -150,45 +131,15 @@ class Maillage {
 	System.out.println("maxX = "+maxX+" et minX = "+minX);
 	System.out.println("maxY = "+maxY+" et minY = "+minY);
 	System.out.println("maxZ = "+maxZ+" et minZ = "+minZ);
-    }
+	}*/
 	
     /**
      * Recentre le maillage dans sa boite englobante.
      * Cette methode permet de repositionner les sommets pour que le centre de la boite englobante soit en (0,0,0).
      */
-    public void recentrerMaillage(){
+    /*public void recentrerMaillage(){
 	// TODO
-    }
-	
-    /**
-     * Retourne le nombre de sommets du maillage
-     * @return nbSommets le nombre de sommets du maillage
-     */
-    public int getNbSommets(){
-	return sListe.size();
-    }
-
-
-    public Sommet getSommet(int i){
-	return sListe.get(i);
-    }
-	
-    /**
-     * Retourne le nombre de faces du maillage
-     * @return nbFaces le nombre de faces du maillage
-     */
-    public int getNbFaces(){
-	return fListe.size();
-    }
-	
-    /**
-     * Retourne le sommet dont l’indice est donne en parametre.
-     * @param indiceFace l'indice du sommet recherche
-     * @return la face dont l'indice est donne en parametre
-     */
-    public Face getFace(int indiceFace){
-	return fListe.get(indiceFace);
-    }
+	}*/
 	
     public void translater(double dx, double dy, double dz){
 	for(int i=0;i<sListe.size();i++){
@@ -197,47 +148,48 @@ class Maillage {
 	    sListe.get(i).setZ(sListe.get(i).getZ()+dz);
 	}
     }
-
+    
     /**
      * Subdivision des faces en 4 sans repositionnement des sommets
      */
-    public void subdivision_faces(int nbSubdiv){
+    /*public void subdivision_faces(int nbSubdiv){
 	for(int i=0;i<nbSubdiv;i++)
 	    subdivision_faces();
     }
     public void subdivision_faces(){
 	
-    }
+    }*/
 
     /**
      * Subdivision de maillage par la méthode de Loop
      */
-    public void loop(int nbSubdiv){
+    /*public void loop(int nbSubdiv){
 	for(int i=0;i<nbSubdiv;i++)
 	    loop();
     }
     public void loop(){
-    }
+    }*/
 
     /**
      * Subdivision de maillage par la méthode Butterfly
      */
-    public void butterfly(int nbSubdiv){
+    /*public void butterfly(int nbSubdiv){
 	for(int i=0;i<nbSubdiv;i++)
 	    butterfly();
     }
     public void butterfly(){
-    }
+    }*/
 
      /**
      * Simplification de maillage
      */
-    public void simplifier(){
+    
+    /*public void simplifier(){
     }
 	
     public void tourner(){
 		
-    }
+    }*/
 	
 	
 }

@@ -1,4 +1,3 @@
-
 class Cube extends Parallelepipede {
 
 	public Cube() {
