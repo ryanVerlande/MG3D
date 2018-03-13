@@ -26,9 +26,14 @@ class Parallelepipede extends Objet3D {
 	    tailleY=ttailleY;
 	    tailleZ=ttailleZ;
 	} else {
-	    this();
+	    origine = new Point3D(0,0,0);
+	tailleX=3;
+	tailleY=1;
+	tailleZ=2;
 	    System.out.println("ERREUR : Les valeurs doivent être positives ! Parallelepipede par défaut créé");
 	}
+
+	genereMaillage();
     }
 
     public Parallelepipede(Parallelepipede p) {

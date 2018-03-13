@@ -62,6 +62,14 @@ abstract class Objet3D{
 	return fListe.get(indiceFace);
     }
 
+    public void translater(double dx, double dy, double dz){
+	for(int i=0;i<sListe.size();i++){
+	    sListe.get(i).setX(sListe.get(i).getX()+dx);
+	    sListe.get(i).setY(sListe.get(i).getY()+dy);
+	    sListe.get(i).setZ(sListe.get(i).getZ()+dz);
+	}
+    }
+
     /*
     public void afficher(QQchose ici - le GLCanvas surement ou un truc qui s en approche){
 	for(int i=0;i<fListe.size();i++){

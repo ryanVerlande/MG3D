@@ -140,14 +140,6 @@ class Maillage extends Objet3D{
     /*public void recentrerMaillage(){
 	// TODO
 	}*/
-	
-    public void translater(double dx, double dy, double dz){
-	for(int i=0;i<sListe.size();i++){
-	    sListe.get(i).setX(sListe.get(i).getX()+dx);
-	    sListe.get(i).setY(sListe.get(i).getY()+dy);
-	    sListe.get(i).setZ(sListe.get(i).getZ()+dz);
-	}
-    }
     
     /**
      * Subdivision des faces en 4 sans repositionnement des sommets
