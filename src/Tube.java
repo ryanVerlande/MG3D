@@ -1,4 +1,4 @@
-class Tube extends Maillage{
+class Tube extends Objet3D{
 	
 	public Tube(){
 		super();

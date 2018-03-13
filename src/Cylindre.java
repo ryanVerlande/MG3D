@@ -1,5 +1,5 @@
 
-class Cylindre extends Maillage{
+class Cylindre extends Objet3D{
 	
 	public Cylindre(){
 		super();

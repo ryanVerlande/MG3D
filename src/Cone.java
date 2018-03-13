@@ -1,6 +1,8 @@
 
-class Cone extends Maillage{
-	
+class Cone extends Objet3D{
+
+    private double rayon, hauteur;
+    
 	public Cone(){
 		super();
 		

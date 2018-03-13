@@ -1,4 +1,4 @@
-class Pyramide extends Maillage{
+class Pyramide extends Objet3D{
 	
 	public Pyramide(){
 		super();

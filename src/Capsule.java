@@ -1,4 +1,4 @@
-class Capsule extends Maillage{
+class Capsule extends Objet3D{
 	
 	public Capsule(){
 		super();

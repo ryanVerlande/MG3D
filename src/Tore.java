@@ -1,2 +1,2 @@
-class Tore extends Maillage{
+class Tore extends Objet3D{
 }

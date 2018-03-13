@@ -1,5 +1,5 @@
 
-class IcoSphere extends Maillage {
+class IcoSphere extends Objet3D {
 
 	public IcoSphere() {
 		super();
