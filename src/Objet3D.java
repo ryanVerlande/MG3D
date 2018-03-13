@@ -4,10 +4,12 @@ abstract class Objet3D{
     //Attributs
     protected ArrayList<Sommet> sListe;
     protected ArrayList<Face> fListe;
+    protected BoiteEnglobante be;
 
     public Objet3D(){
 	sListe = new ArrayList<>();
 	fListe = new ArrayList<>();
+	be = null;
     }
 
     abstract protected void genereMaillage();
@@ -69,6 +71,91 @@ abstract class Objet3D{
 	    sListe.get(i).setZ(sListe.get(i).getZ()+dz);
 	}
     }
+
+    /**
+     * Calcul de la boite englobante.
+     */
+    public void calculeBoiteEnglobante(){
+	double maxX = sListe.get(0).getX(), maxY = sListe.get(0).getY(), maxZ = sListe.get(0).getZ();
+	double minX = sListe.get(0).getX(), minY = sListe.get(0).getY(), minZ = sListe.get(0).getZ();
+	for ( int i = 0; i < sListe.size(); i++ ){
+	    if ( sListe.get(i).getX() > maxX ){
+		maxX = sListe.get(i).getX();
+	    }else if ( sListe.get(i).getX() < minX ){
+		minX = sListe.get(i).getX();
+	    }
+	    if ( sListe.get(i).getY() > maxY ){
+		maxY = sListe.get(i).getY();
+	    }else if ( sListe.get(i).getY() < minY ){
+		minY = sListe.get(i).getY();
+	    }
+	    if ( sListe.get(i).getZ() > maxZ ){
+		maxZ = sListe.get(i).getZ();
+	    }else if ( sListe.get(i).getZ() < minZ ){
+		minZ = sListe.get(i).getZ();
+	    }
+	}
+	be = new BoiteEnglobante(minX,minY,minZ,maxX,maxY,maxZ);
+    }
+
+    /**
+     *  Cette methode permet de récupérer la boite englobante.
+     */
+    public BoiteEnglobante getBe(){
+	if(be==null)
+	    calculeBoiteEnglobante();
+	return be;
+    }
+    
+    /**
+     * Recentre le maillage dans sa boite englobante.
+     * Cette methode permet de repositionner les sommets pour que le centre de la boite englobante soit en (0,0,0).
+     */
+    /*public void recentrerMaillage(){
+	// TODO
+	}*/
+    
+    /**
+     * Subdivision des faces en 4 sans repositionnement des sommets
+     */
+    public void subdivision_faces(int nbSubdiv){
+	for(int i=0;i<nbSubdiv;i++)
+	    subdivision_faces();
+    }
+    public void subdivision_faces(){
+	
+    }
+
+    /**
+     * Subdivision de maillage par la méthode de Loop
+     */
+    /*public void loop(int nbSubdiv){
+	for(int i=0;i<nbSubdiv;i++)
+	    loop();
+    }
+    public void loop(){
+    }*/
+
+    /**
+     * Subdivision de maillage par la méthode Butterfly
+     */
+    /*public void butterfly(int nbSubdiv){
+	for(int i=0;i<nbSubdiv;i++)
+	    butterfly();
+    }
+    public void butterfly(){
+    }*/
+
+     /**
+     * Simplification de maillage
+     */
+    
+    /*public void simplifier(){
+    }
+	
+    public void tourner(){
+		
+    }*/
 
     /*
     public void afficher(QQchose ici - le GLCanvas surement ou un truc qui s en approche){
