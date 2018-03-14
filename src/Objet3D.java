@@ -29,6 +29,16 @@ abstract class Objet3D{
     public void add(Face f){
 	if ( (f.getS1() <= sListe.size() ) && (f.getS2() <= sListe.size() ) && (f.getS3() <= sListe.size() ) ){
 	    fListe.add(f);
+	    
+	    //gestion des voisins
+	    getSommet(f.getS1()).ajouterVoisin(f.getS2());
+	    getSommet(f.getS1()).ajouterVoisin(f.getS3());
+	    
+	    getSommet(f.getS2()).ajouterVoisin(f.getS1());
+	    getSommet(f.getS2()).ajouterVoisin(f.getS3());
+	    
+	    getSommet(f.getS3()).ajouterVoisin(f.getS1());
+	    getSommet(f.getS3()).ajouterVoisin(f.getS2());
 	}else{
 	    System.out.println("Ajout impossible, l'indice de sommet n'existe pas !");
 	}
