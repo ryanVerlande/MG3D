@@ -37,6 +37,8 @@ class Parallelepipede extends Objet3D {
     }
 
     public Parallelepipede(Parallelepipede p) {
+	super();
+	
 	origine=new Point3D(p.origine);
 	tailleX=p.tailleX;
 	tailleY=p.tailleY;
@@ -45,14 +47,14 @@ class Parallelepipede extends Objet3D {
     }
 
     protected void genereMaillage(){
-	    add(new Sommet(0, 0, 0));
-	    add(new Sommet(tailleX, 0, 0));
-	    add(new Sommet(0, tailleY, 0));
-	    add(new Sommet(tailleX, tailleY, 0));
-	    add(new Sommet(0, 0, tailleZ));
-	    add(new Sommet(tailleX, 0, tailleZ));
-	    add(new Sommet(0, tailleY, tailleZ));
-	    add(new Sommet(tailleX, tailleY, tailleZ));
+	    add(new Sommet(0 + origine.getX(), 0 + origine.getY(), 0 + origine.getZ()));
+	    add(new Sommet(tailleX + origine.getX(), 0 + origine.getY(), 0 + origine.getZ()));
+	    add(new Sommet(0 + origine.getX(), tailleY + origine.getY(), 0 + origine.getZ()));
+	    add(new Sommet(tailleX + origine.getX(), tailleY + origine.getY(), 0 + origine.getZ()));
+	    add(new Sommet(0 + origine.getX(), 0 + origine.getY(), tailleZ + origine.getZ()));
+	    add(new Sommet(tailleX + origine.getX(), 0 + origine.getY(), tailleZ + origine.getZ()));
+	    add(new Sommet(0 + origine.getX(), tailleY + origine.getY(), tailleZ + origine.getZ()));
+	    add(new Sommet(tailleX + origine.getX(), tailleY + origine.getY(), tailleZ + origine.getZ()));
 
 	    add(new Face(3, 1, 0));
 	    add(new Face(2, 3, 0));
@@ -66,8 +68,6 @@ class Parallelepipede extends Objet3D {
 	    add(new Face(3, 2, 6));
 	    add(new Face(1, 5, 0));
 	    add(new Face(4, 0, 5));
-
-	    translater(origine.getX(), origine.getY(), origine.getZ());
     }
 
 }
