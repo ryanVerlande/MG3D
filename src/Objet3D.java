@@ -1,3 +1,5 @@
+package MG3D;
+
 import java.util.ArrayList;
 import java.io.BufferedWriter;
 import java.io.FileWriter;

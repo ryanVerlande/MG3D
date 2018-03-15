@@ -1,3 +1,5 @@
+package MG3D;
+
 class Cylindre extends Objet3D{
 
     private Point3D centreBas;

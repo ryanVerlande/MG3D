@@ -1,3 +1,5 @@
+package MG3D;
+
 class Vecteur3D {
 
 	private double dx, dy, dz;

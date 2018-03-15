@@ -1,3 +1,5 @@
+package MG3D;
+
 import java.util.ArrayList;
 
 class Sommet extends Point3D{

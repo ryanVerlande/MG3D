@@ -1,3 +1,5 @@
+package MG3D;
+
 class Cube extends Parallelepipede {
 
 	public Cube() {

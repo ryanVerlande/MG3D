@@ -1,3 +1,5 @@
+package MG3D;
+
 class Pyramide extends Objet3D{
 	
 	public Pyramide(){

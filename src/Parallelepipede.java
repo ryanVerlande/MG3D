@@ -1,3 +1,5 @@
+package MG3D;
+
 class Parallelepipede extends Objet3D {
 
     private Point3D origine;

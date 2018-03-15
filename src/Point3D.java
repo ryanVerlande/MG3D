@@ -1,3 +1,5 @@
+package MG3D;
+
 
 class Point3D {
 // ATTRIBUTS

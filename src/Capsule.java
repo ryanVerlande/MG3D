@@ -1,3 +1,5 @@
+package MG3D;
+
 class Capsule extends Objet3D{
 
     public Capsule(){

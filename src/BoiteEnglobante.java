@@ -1,3 +1,5 @@
+package MG3D;
+
 class BoiteEnglobante {
 	
     private Point3D min, max;

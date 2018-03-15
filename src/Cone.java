@@ -1,3 +1,4 @@
+package MG3D;
 
 class Cone extends Objet3D{
 

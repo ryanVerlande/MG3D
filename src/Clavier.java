@@ -23,7 +23,7 @@
 /* along with MG2D. If not, see <http://www.gnu.org/licenses/>.      */
 /*                                                                   */
 /*********************************************************************/
-
+package MG3D;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

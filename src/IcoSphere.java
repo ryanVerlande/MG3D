@@ -1,3 +1,5 @@
+package MG3D;
+
 class IcoSphere extends Objet3D {
 
     private Point3D centre;

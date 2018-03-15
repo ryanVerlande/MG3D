@@ -1,3 +1,5 @@
+package MG3D;
+
 class Tube extends Objet3D{
 	
 	public Tube(){
