@@ -50,8 +50,9 @@ class Cone extends Objet3D{
 	
 	add(new Sommet(-1.000000*rayon+centreBase.getX(), 0.00000+centreBase.getY(), 0.000000*rayon+centreBase.getZ()));
 	add(new Sommet(-0.951056*rayon+centreBase.getX(), 0.00000+centreBase.getY(), -0.309016*rayon+centreBase.getZ()));
-	add(new Sommet(-0.404508*rayon+centreBase.getX(), 0.00000+centreBase.getY(), -0.587786*rayon+centreBase.getZ()));
+	add(new Sommet(-0.809016*rayon+centreBase.getX(), 0.00000+centreBase.getY(), -0.587786*rayon+centreBase.getZ()));
 	add(new Sommet(-0.587786*rayon+centreBase.getX(), 0.00000+centreBase.getY(), -0.809016*rayon+centreBase.getZ()));
+	add(new Sommet(-0.309016*rayon+centreBase.getX(), 0.00000+centreBase.getY(), -0.951056*rayon+centreBase.getZ()));
 	
 	add(new Sommet(0.000000*rayon+centreBase.getX(), 0.00000+centreBase.getY(), -1.000000*rayon+centreBase.getZ()));
 	add(new Sommet(0.309016*rayon+centreBase.getX(), 0.00000+centreBase.getY(), -0.951056*rayon+centreBase.getZ()));

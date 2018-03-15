@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 abstract class Objet3D{
     //Attributs
@@ -167,8 +170,90 @@ abstract class Objet3D{
 		
     }*/
 
-    /*
-    public void afficher(QQchose ici - le GLCanvas surement ou un truc qui s en approche){
+    /**
+     * Cette methode affiche la liste de sommets et de faces constituant le maillage
+     */
+    public void affichageParListe(){
+	System.out.println("Sommets : ");
+	for ( int i = 0; i < sListe.size(); i++ ){
+	    System.out.println(i+" - "+sListe.get(i));
+	}
+	System.out.println("Faces : ");
+	for ( int i = 0; i < fListe.size(); i++ ){
+	    System.out.println(i+" - "+fListe.get(i));
+	}
+    }
+    
+    /**
+     * Cette methode affiche l’ensemble des faces sous la forme de 3×3 coordonnees (x,y,z)
+     */
+    public void affichageSoupePolygone(){
+	System.out.println("Soupe : ");
+	for ( int i = 0; i < fListe.size(); i++){
+	    System.out.println(i+" : "+sListe.get(fListe.get(i).getS1()) +"-"+sListe.get(fListe.get(i).getS2())+
+			       "-"+sListe.get(fListe.get(i).getS3()) );
+	}
+    }
+
+    /**
+     * Cette méthode permet de sauver le maillage dans un fichier de type pgn
+     */
+    public void sauverPGN(String saveFile){
+	try{
+	    PrintWriter fichier =  new PrintWriter(new BufferedWriter (new FileWriter(saveFile)));
+	    //fichier.println(toString());
+	    fichier.println(getNbSommets()+ " " +getNbFaces());
+	    for ( int i = 0; i < sListe.size(); i++ )
+		fichier.println(getSommet(i).getX()+ " " + getSommet(i).getY() + " " + getSommet(i).getZ());
+
+	    fichier.println("");
+	    
+	    for ( int i = 0; i < fListe.size(); i++ )
+		fichier.println(getFace(i).getS1()+ " " + getFace(i).getS2() + " " + getFace(i).getS3());
+	    
+	    fichier.close();
+	}catch(Exception e){
+	    System.out.println("Impossible de sauvegarder le fichier "+saveFile);
+	}
+    }
+
+    /**
+     * Cette méthode permet de sauver le maillage dans un fichier de type stl
+     */
+    public void sauverSTL(String saveFile){
+	try{
+	    PrintWriter fichier =  new PrintWriter(new BufferedWriter (new FileWriter(saveFile)));
+	    //fichier.println(toString());
+	    fichier.println("solid " +getClass().toString().split(" ")[1]);
+	    
+	    for ( int i = 0; i < fListe.size(); i++ ){
+		fichier.println("");
+		fichier.println("facet normal 0 0 0");
+		fichier.println("    outer loop");
+		fichier.println("        vertex "+getSommet(getFace(i).getS1()).getX()+ " " + getSommet(getFace(i).getS1()).getY() + " " + getSommet(getFace(i).getS1()).getZ());
+		fichier.println("        vertex "+getSommet(getFace(i).getS2()).getX()+ " " + getSommet(getFace(i).getS2()).getY() + " " + getSommet(getFace(i).getS2()).getZ());
+		fichier.println("        vertex "+getSommet(getFace(i).getS3()).getX()+ " " + getSommet(getFace(i).getS3()).getY() + " " + getSommet(getFace(i).getS3()).getZ());
+		fichier.println("    endloop");
+		fichier.println("endfacet");
+	    }
+	    fichier.println("");
+	    fichier.println("endsolid " +getClass().toString().split(" ")[1]);
+	    fichier.close();
+	}catch(Exception e){
+	    System.out.println("Impossible de sauvegarder le fichier "+saveFile);
+	}
+    }
+
+    /**
+     * Calcule la normale à une face
+     * TODO
+     */
+    public Vecteur3D normaleFace(int indice){
+	return new Vecteur3D(0,0,0);
+    }
+
+    
+    /*public void afficher(QQchose ici - le GLCanvas surement ou un truc qui s en approche){
 	for(int i=0;i<fListe.size();i++){
 	    glBegin(GL_TRIANGLES);
 	    glVertex3f(sListe.get(fListe.get(i).getS1()).getX(),sListe.get(fListe.get(i).getS1()).getY(),sListe.get(fListe.get(i).getS1()).getZ());

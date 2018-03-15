@@ -13,10 +13,12 @@ class Sommet extends Point3D{
 
     public Sommet(double x, double y, double z){
 	super(x,y,z);
+	voisins = new ArrayList<Integer>();
     }
 
     public Sommet(Sommet s){
 	super(s.getX(),s.getY(),s.getZ());
+	voisins = new ArrayList<Integer>();
     }
 
     public boolean ajouterVoisin(int indice){

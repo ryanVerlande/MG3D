@@ -29,6 +29,17 @@ class Maillage extends Objet3D{
 	genereMaillage();
     }
 
+    /**
+     * Constructeur par copie.
+     * Construit un maillage a partir d'un modele de maillage.
+     * @param m le maillage a copier.
+     */
+    public Maillage(Maillage m){
+	//TODO - sûrement pas !!
+	m.fListe = fListe;
+	m.sListe = sListe;
+    }
+
     protected void genereMaillage(){
 	
 	Scanner sc = null;
@@ -67,42 +78,5 @@ class Maillage extends Objet3D{
 	sc.close(); // fermeture du fichier apres lecture
 		
     }
-	
-    /**
-     * Constructeur par copie.
-     * Construit un maillage a partir d'un modele de maillage.
-     * @param m le maillage a copier.
-     */
-    public Maillage(Maillage m){
-	//TODO - sûrement pas !!
-	m.fListe = fListe;
-	m.sListe = sListe;
-    }
-
-    
-    /**
-     * Cette methode affiche la liste de sommets et de faces constituant le maillage
-     */
-    /*public void affichageParListe(){
-	System.out.println("Sommets : ");
-	for ( int i = 0; i < sListe.size(); i++ ){
-	    System.out.println(i+" - "+sListe.get(i));
-	}
-	System.out.println("Faces : ");
-	for ( int i = 0; i < fListe.size(); i++ ){
-	    System.out.println(i+" - "+fListe.get(i));
-	}
-	}*/
-	
-    /**
-     * Cette methode affiche l’ensemble des faces sous la forme de 3×3 coordonnees (x,y,z)
-     */
-    /*public void affichageSoupePolygone(){
-	System.out.println("Soupe : ");
-	for ( int i = 0; i < fListe.size(); i++){
-	    System.out.println(i+" : "+sListe.get(fListe.get(i).getS1()) +"-"+sListe.get(fListe.get(i).getS2())+
-			       "-"+sListe.get(fListe.get(i).getS3()) );
-	}
-	}*/
        	
 }
