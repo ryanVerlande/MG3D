@@ -78,7 +78,7 @@ class Cylindre extends Objet3D{
 	add(new Face(20, 0, 19));
 	add(new Face(1, 0, 20));
 
-	/*
+	
 	// sommets face du haut
 	add(new Sommet(0.000000+centreBas.getX(), 0.00000+centreBas.getY() + hauteur, 0.000000+centreBas.getZ()));
 	
@@ -127,12 +127,21 @@ class Cylindre extends Objet3D{
 	add(new Face(40, 39, 21));
 	add(new Face(41, 40, 21));
 	add(new Face(22, 41, 21));
-	*/
+
+	//face du cote
+	for(int i=1;i<=19;i++){
+	    add(new Face(i,i+21,i+1));
+	    add(new Face(i+1,i+21,i+22));
+	}
+	add(new Face(20,41,1));
+	add(new Face(20,40,41));
+	    
+	
     }
 
     // Test du cylindre
     public static void main(String[] args){
 	Cylindre c = new Cylindre();
-	c.sauverSTL("test.stl");
+	c.sauverPGN("test.pgn");
     }
 }

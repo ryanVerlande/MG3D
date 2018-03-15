@@ -209,7 +209,7 @@ abstract class Objet3D{
 	    fichier.println("");
 	    
 	    for ( int i = 0; i < fListe.size(); i++ )
-		fichier.println(getFace(i).getS1()+ " " + getFace(i).getS2() + " " + getFace(i).getS3());
+		fichier.println(getFace(i).getS1()+ " " + getFace(i).getS2() + " " + getFace(i).getS3()+ " -1");
 	    
 	    fichier.close();
 	}catch(Exception e){
