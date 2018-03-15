@@ -134,7 +134,7 @@ class Cylindre extends Objet3D{
 	    add(new Face(i+1,i+21,i+22));
 	}
 	add(new Face(20,41,1));
-	add(new Face(20,40,41));
+	add(new Face(1,41,22));
 	    
 	
     }
