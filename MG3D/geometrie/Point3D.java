@@ -34,9 +34,9 @@ public class Point3D {
 	 * @param s Le sommet à copier.
 	 */
 	public Point3D(Point3D p) {
-		p.x = this.x;
-		p.y = this.y;
-		p.z = this.z;
+		this.x = p.x;
+		this.y = p.y;
+		this.z = p.z;
 	}
 	
 	/**

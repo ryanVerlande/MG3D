@@ -26,6 +26,8 @@
 
 package MG3D;
 
+import MG3D.geometrie.*;
+
 import java.awt.Graphics;
 import java.awt.Dimension;
 
@@ -58,13 +60,13 @@ public class Panneau extends GLCanvas implements GLEventListener{
     private ArrayList < Objet3D > a;
     private GLU glu = new GLU();
     private GL2 gl;
-	private GLCanvas glcanvas;
-	private float deplhb = -5.0f,deplgd = 0.0f;
-	private float orientgd = 0.0f, orienthb = 0.0f;
-	private float gravite = 0.0f;
-	private float vitesse = 0.2f;
-	private float sensiH = 1.5f, sensiV = 1.0f;
-	private float h;
+    private GLCanvas glcanvas;
+    private float deplhb = -5.0f,deplgd = 0.0f;
+    private float orientgd = 0.0f, orienthb = 0.0f;
+    private float gravite = 0.0f;
+    private float vitesse = 0.2f;
+    private float sensiH = 1.5f, sensiV = 1.0f;
+    private float h;
 	
     // Constructeur //
 	
@@ -74,10 +76,10 @@ public class Panneau extends GLCanvas implements GLEventListener{
     public Panneau () {
 	super();
 	GLProfile profile = GLProfile.get(GLProfile.GL2);
-    GLCapabilities capabilities = new GLCapabilities(profile);
+	GLCapabilities capabilities = new GLCapabilities(profile);
     	
-    glcanvas = new GLCanvas(capabilities);
-    glcanvas.display();
+	glcanvas = new GLCanvas(capabilities);
+	glcanvas.display();
 	a = new ArrayList < Objet3D > ();
     }
 	
@@ -89,9 +91,9 @@ public class Panneau extends GLCanvas implements GLEventListener{
     public Panneau ( ArrayList < Objet3D > a ) {
 	super();
 	GLProfile profile = GLProfile.get(GLProfile.GL2);
-    GLCapabilities capabilities = new GLCapabilities(profile);
+	GLCapabilities capabilities = new GLCapabilities(profile);
     	
-    glcanvas = new GLCanvas(capabilities);
+	glcanvas = new GLCanvas(capabilities);
 	this.a = new ArrayList<Objet3D>(a);
     }
 	
@@ -100,10 +102,10 @@ public class Panneau extends GLCanvas implements GLEventListener{
      * @param p Zone d'affichage à copier.
      */
     public Panneau ( Panneau p ) {
-    super();
-    GLProfile profile = GLProfile.get(GLProfile.GL2);
-    GLCapabilities capabilities = new GLCapabilities(profile);
-    glcanvas = new GLCanvas(capabilities);
+	super();
+	GLProfile profile = GLProfile.get(GLProfile.GL2);
+	GLCapabilities capabilities = new GLCapabilities(profile);
+	glcanvas = new GLCanvas(capabilities);
 	setPreferredSize(new Dimension(p.getWidth(),p.getHeight()));
 	setSize(new Dimension(p.getWidth(),p.getHeight()));
 	a = p.getA();
@@ -145,9 +147,9 @@ public class Panneau extends GLCanvas implements GLEventListener{
      */
     public void paint ( GL2 gl ) {
 	// On parcourt la ArrayList via une boucle for() qui affiche un à un le contenu de a.
-		for ( int i = 0; i < a.size(); i++ ){
-		    a.get( i ).afficher( gl );
-		}
+	for ( int i = 0; i < a.size(); i++ ){
+	    a.get( i ).afficher( gl );
+	}
     }
     
     /**
@@ -204,69 +206,69 @@ public class Panneau extends GLCanvas implements GLEventListener{
 	return retour;
     }
 
-	@Override
-	public void display(GLAutoDrawable drawable) {
-		gl = drawable.getGL().getGL2();
-		gl.glClearColor( 0.5f, 0.5f, 0.5f, 1.0f );
-		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+    @Override
+    public void display(GLAutoDrawable drawable) {
+	gl = drawable.getGL().getGL2();
+	gl.glClearColor( 0.5f, 0.5f, 0.5f, 1.0f );
+	gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
 
-		// h = (float) width / (float) height;
-		// gl.glViewport(0, 0, width, height);
-		gl.glMatrixMode(GL2.GL_PROJECTION);
-		gl.glLoadIdentity();
+	gl.glMatrixMode(GL2.GL_PROJECTION);
+	gl.glLoadIdentity();
 		
-		glu.gluPerspective(45.0f, h, 1.0, 50.0);
+	glu.gluPerspective(45.0f, h, 1.0, 50.0);
 		
-		gl.glRotatef(orientgd, 0.0f, 1.0f, 0.0f);
-		gl.glRotatef(orienthb, 1.0f, 0.0f, 0.0f);
-		gl.glTranslatef(deplgd, gravite, deplhb);
+	gl.glRotatef(orientgd, 0.0f, 1.0f, 0.0f);
+	gl.glRotatef(orienthb, 1.0f, 0.0f, 0.0f);
+	gl.glTranslatef(deplgd, gravite, deplhb);
 		
-		gl.glMatrixMode(GL2.GL_MODELVIEW);
-		gl.glLoadIdentity();
-		
-		gl.glTranslatef(-2.0f, -2.0f, -10.0f);
-		
-		paint(gl);
-		
-		gl.glFlush();
-		
-		
-	}
+	gl.glMatrixMode(GL2.GL_MODELVIEW);
+	gl.glLoadIdentity();
 
-	@Override
-	public void dispose(GLAutoDrawable drawable) {
-		// TODO Auto-generated method stub
-	}
+	// Ce glTranslatef n'a rien à faire là !
+	// ce sont les objets qui doivent être placé au bon endroit directement
+	//gl.glTranslatef(-2.0f, -2.0f, -10.0f);
+		
+	paint(gl);
+		
+	gl.glFlush();
+		
+		
+    }
 
-	@Override
-	public void init(GLAutoDrawable drawable) {
-		final GL2 gl = drawable.getGL().getGL2();
-		gl.glShadeModel(GL2.GL_SMOOTH);
-		gl.glClearColor(0f, 0f, 0f, 0f);
-		gl.glClearDepth(1.0f);
-		gl.glEnable(GL2.GL_DEPTH_TEST);
-		gl.glDepthFunc(GL2.GL_LEQUAL);
-		gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
-	}
+    @Override
+    public void dispose(GLAutoDrawable drawable) {
+	// TODO Auto-generated method stub
+    }
 
-	@Override
-	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-		final GL2 gl = drawable.getGL().getGL2();
-		if (height == 0) {
-			height = 1;
-		}
-		
-		h = (float) width / (float) height;
-		gl.glViewport(0, 0, width, height);
-		gl.glMatrixMode(GL2.GL_PROJECTION);
-		gl.glLoadIdentity();
-		
-		glu.gluPerspective(45.0f, h, 1.0, 20.0);
-		gl.glTranslatef(0.0f, 0.0f, deplhb);
-		
-		gl.glMatrixMode(GL2.GL_MODELVIEW);
-		gl.glLoadIdentity();
+    @Override
+    public void init(GLAutoDrawable drawable) {
+	final GL2 gl = drawable.getGL().getGL2();
+	gl.glShadeModel(GL2.GL_SMOOTH);
+	gl.glClearColor(0f, 0f, 0f, 0f);
+	gl.glClearDepth(1.0f);
+	gl.glEnable(GL2.GL_DEPTH_TEST);
+	gl.glDepthFunc(GL2.GL_LEQUAL);
+	gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
+    }
+
+    @Override
+    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+	final GL2 gl = drawable.getGL().getGL2();
+	if (height == 0) {
+	    height = 1;
 	}
+		
+	h = (float) width / (float) height;
+	gl.glViewport(0, 0, width, height);
+	gl.glMatrixMode(GL2.GL_PROJECTION);
+	gl.glLoadIdentity();
+		
+	glu.gluPerspective(45.0f, h, 1.0, 20.0);
+	gl.glTranslatef(0.0f, 0.0f, deplhb);
+		
+	gl.glMatrixMode(GL2.GL_MODELVIEW);
+	gl.glLoadIdentity();
+    }
 	
 	
 	

@@ -6,7 +6,8 @@ class Main {
 	public static void main(String[] args) {
 		Clavier clavier;
 		Fenetre f = new Fenetre("Mon appli MG3D", 1080, 720);
-		Point3D origine = new Point3D();
+		Point3D origine = new Point3D(0, 0, -20);
+	System.out.println("origine ("+origine.getX()+" "+origine.getY()+" "+origine.getZ()+")" );
 		Cylindre c = new Cylindre(origine, 1, 2);
 		Cube cube = new Cube(Couleur.JAUNE, origine, 1.5);
 		cube.translater(2, 0, 0);
@@ -14,6 +15,8 @@ class Main {
 		f.ajouter(c);
 		c.setCouleur(Couleur.MAGENTA);
 		f.ajouter(cube);
+
+		c.sauverPGN("test.pgn");
 		
 		// boucle de jeu
 		while (true) {

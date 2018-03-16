@@ -15,19 +15,21 @@ public class Cylindre extends Objet3D{
 
     public Cylindre(Point3D ccentreBas, double rrayon, double hhauteur){
 	super(Couleur.NOIR);
+	System.out.println("ccentreBas ("+ccentreBas.getX()+" "+ccentreBas.getY()+" "+ccentreBas.getZ()+")" );
 	centreBas = new Point3D(ccentreBas);
+	System.out.println("centreBas ("+centreBas.getX()+" "+centreBas.getY()+" "+centreBas.getZ()+")" );
 	rayon=rrayon;
 	hauteur=hhauteur;
 	genereMaillage();	
     }
 
-public Cylindre(Couleur couleur, Point3D ccentreBas, double rrayon, double hhauteur) {
-		super(couleur);
-		centreBas = new Point3D(ccentreBas);
-		rayon = rrayon;
-		hauteur = hhauteur;
-		genereMaillage();
-	}
+    public Cylindre(Couleur couleur, Point3D ccentreBas, double rrayon, double hhauteur) {
+	super(couleur);
+	centreBas = new Point3D(ccentreBas);
+	rayon = rrayon;
+	hauteur = hhauteur;
+	genereMaillage();
+    }
 
     public Cylindre(Cylindre c){
 	super(c.getCouleur());
@@ -151,7 +153,7 @@ public Cylindre(Couleur couleur, Point3D ccentreBas, double rrayon, double hhaut
 
     // Test de la classe Cylindre
     /*public static void main(String[] args){
-	Cylindre c = new Cylindre();
-	c.sauverPGN("test.pgn");
-	}*/
+      Cylindre c = new Cylindre();
+      c.sauverPGN("test.pgn");
+      }*/
 }

@@ -26,7 +26,7 @@
 
 package MG3D;
 
-
+import MG3D.geometrie.*;
 
 import java.awt.Dimension;
 

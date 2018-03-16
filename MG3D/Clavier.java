@@ -27,6 +27,7 @@ package MG3D;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import MG3D.geometrie.*;
 
 /**
  * Cette classe implémente les méthodes de KeyListener permettant la gestion du clavier.
