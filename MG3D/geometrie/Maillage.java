@@ -1,4 +1,4 @@
-package MG3D;
+package MG3D.geometrie;
 
 import java.io.File;
 import java.io.IOException;

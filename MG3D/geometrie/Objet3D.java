@@ -1,4 +1,4 @@
-package MG3D;
+package MG3D.geometrie;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import com.jogamp.opengl.GL2;
 
-import MG3D.Couleur;
+import MG3D.geometrie.Couleur;
 
 public abstract class Objet3D{
     //Attributs

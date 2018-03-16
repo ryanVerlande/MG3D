@@ -1,4 +1,4 @@
-package MG3D;
+package MG3D.geometrie;
 
 public class Tube extends Objet3D{
 	

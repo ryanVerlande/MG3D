@@ -1,4 +1,5 @@
 import MG3D.*;
+import MG3D.geometrie.*;
 
 class Main {
 	

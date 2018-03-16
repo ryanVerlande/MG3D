@@ -1,4 +1,4 @@
-package MG3D;
+package MG3D.geometrie;
 
 public class Parallelepipede extends Objet3D {
 
