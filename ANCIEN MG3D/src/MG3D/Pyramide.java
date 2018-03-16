@@ -1,6 +1,5 @@
-package MG3D.geometrie;
-
-public class Pyramide extends Objet3D{
+package MG3D;
+class Pyramide extends Objet3D{
 	
 	public Pyramide(){
 		super();
@@ -9,13 +8,9 @@ public class Pyramide extends Objet3D{
 	public Pyramide(double hauteur, double base){
 		super(Couleur.NOIR);
 	}
-
-public Pyramide(Couleur couleur, double hauteur, double base){
-		super(couleur);
-	}
 	
-	public Pyramide(Pyramide p){
-		super(p.getCouleur);
+	public Pyramide(Couleur couleur, double hauteur, double base){
+		super(couleur);
 	}
 	
 	@Override

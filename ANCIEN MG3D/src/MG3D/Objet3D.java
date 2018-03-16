@@ -1,4 +1,4 @@
-package MG3D.geometrie;
+package MG3D;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 import com.jogamp.opengl.GL2;
 
-import MG3D.geometrie.Couleur;
+import MG3D.Couleur;
 
-public abstract class Objet3D{
+abstract class Objet3D{
     //Attributs
     protected ArrayList<Sommet> sListe;
     protected ArrayList<Face> fListe;

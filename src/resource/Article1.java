@@ -1,4 +1,4 @@
-package MG3D;
+package resource;
 
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;

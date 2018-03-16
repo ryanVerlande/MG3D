@@ -7,7 +7,7 @@ public class Cone extends Objet3D {
     
     public Cone(){
 	super();
-	centreBase = new Point3d(0,0,0);
+	centreBase = new Point3D(0,0,0);
 	rayon=1;
 	hauteur=2;
 
@@ -40,7 +40,7 @@ public Cone(Couleur couleur, Point3D ccentreBase, double rrayon, double hhauteur
 	genereMaillage();
     }
 
-    protected genereMaillage(){
+    protected void genereMaillage(){
 	// sommet
 	add(new Sommet(0.000000+centreBase.getX(), 1.000000*hauteur+centreBase.getY(), 0.000000+centreBase.getZ()));
 	add(new Sommet(0.000000+centreBase.getX(), 0.00000+centreBase.getY(), 0.000000+centreBase.getZ()));
