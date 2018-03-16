@@ -1,2 +1,0 @@
-class Tore extends Maillage{
-}
