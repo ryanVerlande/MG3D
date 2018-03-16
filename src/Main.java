@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+
 import MG3D.Camera;
 import MG3D.Clavier;
 import MG3D.Fenetre;
@@ -15,7 +17,9 @@ class Main {
 		Camera cam = f.getCamera();
 		Point3D origine = new Point3D();
 		Cylindre c = new Cylindre(origine, 1, 2);
-		Cube cube = new Cube(Couleur.JAUNE, origine, 1.5);
+		Cube cube = new Cube(Couleur.JAUNE, origine, 1);
+		
+		ArrayList<Cube> listCube = new ArrayList<>();
 		
 		// A gauche et en haut, on diminue les valeurs
 		// A droite et en bas, on augmente les valeurs
@@ -26,10 +30,24 @@ class Main {
 		float orientGD = cam.getDirectionGD();
 		float orientHB = cam.getDirectionHB();
 		
-		cube.translater(2, 0, 0);
+		cube.translater(1, 0, -10);
+		c.translater(-1, 0, -10);
 		c.setCouleur(Couleur.MAGENTA);
-		f.ajouter(c);
-		f.ajouter(cube);
+//		f.ajouter(c);
+//		f.ajouter(cube);
+		
+		for (int i = 0; i<5; i++){
+			listCube.add(new Cube(Couleur.BLANC, origine, 2));
+			listCube.get(i).translater(i*5, 0, -10);
+			f.ajouter(listCube.get(i));
+		}
+		
+		listCube.get(0).setCouleur(Couleur.BLEU);
+		listCube.get(1).setCouleur(Couleur.CYAN);
+		listCube.get(2).setCouleur(Couleur.ROUGE);
+		listCube.get(3).setCouleur(Couleur.JAUNE);
+		listCube.get(4).setCouleur(Couleur.VERT);
+		
 		
 		// boucle de jeu
 		while (true) {
@@ -40,6 +58,9 @@ class Main {
 			if ( clavier.getEspaceTape() ){
 				c.translater(0, 2, 0);
 				c.setCouleur(Couleur.CYAN);
+				for (int i = 0; i<10; i++){
+					listCube.get(i).setCouleur(Couleur.CYAN);
+				}
 			}
 			
 			/*** DEPLACEMENTS ***/

@@ -11,8 +11,8 @@ public class Camera {
 	
 	public Camera(){
 		position = 0.0f;
-		deplacementHB = -10.0f;
-		deplacementGD = -1.0f;
+		deplacementHB = 0.0f;
+		deplacementGD = 0.0f;
 		directionHB = 0.0f;
 		directionGD = 0.0f;
 		hauteur = -1.0f;
