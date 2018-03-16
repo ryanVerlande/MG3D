@@ -23,15 +23,13 @@
 /* along with MG2D. If not, see <http://www.gnu.org/licenses/>.      */
 /*                                                                   */
 /*********************************************************************/
-
 package MG3D;
-
-import MG3D.geometrie.*;
 
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
@@ -76,8 +74,6 @@ public class Fenetre extends JFrame {
 
     String titre;
     
-    private GLCanvas glcanvas;
-
     // Constructeur //
 
     /**
@@ -86,14 +82,14 @@ public class Fenetre extends JFrame {
      * Par défaut, la fenêtre est centrée et ne peut pas être redimensionnée.
      */
     public Fenetre () {
-
+		
 	//Non instanciation du clavier et de la souris
 	c=null;
 	s=null;
-
+	
 	d = new Dimension ( 800, 600 );
 	p = new Panneau ();
-
+	
 	p.setPreferredSize ( d ); // On indique que l'on souhaite avoir un Panneau de la Dimension (largeur, hauteur) //
 	p.addGLEventListener(p);
 	this.getContentPane().add(p);
@@ -180,11 +176,11 @@ public class Fenetre extends JFrame {
      * @param hauteur Hauteur de l'espace de travail.
      */
     public Fenetre ( String ttitre, int largeur, int hauteur ) {
-
+    
 	//Non instanciation du clavier et de la souris
 	c=null;
 	s=null;
-
+	
 	d = new Dimension ( largeur, hauteur );
 	p = new Panneau ();
 
@@ -229,7 +225,6 @@ public class Fenetre extends JFrame {
      * @return copie du Panneau lié à la Fenetre.
      */
     public Panneau getP () {
-
 	return new Panneau(p);
     }
 
@@ -259,7 +254,10 @@ public class Fenetre extends JFrame {
 	p.addMouseListener(s);p.addMouseMotionListener(s);
 	return s;
     }
-
+    
+    public Camera getCamera(){
+    	return p.getCamera();
+    }
 
     /**
      * Permet l'affichage ou non du nombre d'image par seconde dans la barre de titre.
@@ -314,6 +312,7 @@ public class Fenetre extends JFrame {
 	}
 
 	dernierEvt=temp;
+	
 	repaint();
     }
 
