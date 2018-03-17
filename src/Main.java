@@ -16,11 +16,12 @@ class Main {
 		Fenetre f = new Fenetre("Mon appli MG3D", 1080, 720);
 		Clavier clavier = f.getClavier();
 		Camera cam = f.getCamera();
-		f.activerLignes(true);
+		
 		cam.setPosition(new Point3D(0, 1, 0));
 		
 		float vitesse = 0.2f;
 		float sensi = 1.5f;
+		int ouiNon = 1;
 		
 		Cylindre c = new Cylindre(new Point3D(0, 0, -15), 1, 2);
 		c.setCouleur(Couleur.MAGENTA);
@@ -51,7 +52,19 @@ class Main {
 			try {
 				Thread.sleep(10);
 			} catch (Exception err) {}
-
+			
+			/*** Activer les lignes ou non ***/
+			
+			if ( clavier.getEntreeTape() ){
+				ouiNon++;
+				if ( ouiNon % 2 == 0){
+					f.activerLignes(true);
+				}else{
+					f.activerLignes(false);
+				}
+			}
+			
+			/*** Intersection en cours... ***/
 			if (clavier.getEspaceTape()) {
 				c.translater(0, 2, 2);
 				c.setCouleur(Couleur.CYAN);

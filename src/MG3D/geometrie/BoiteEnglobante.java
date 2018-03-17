@@ -21,6 +21,9 @@ public class BoiteEnglobante {
 
 	public boolean intersection(BoiteEnglobante be) {
 		// TODO
+		if ( be.getMin().getX() > min.getX() ){
+			return true;
+		}
 		return false;
 	}
 

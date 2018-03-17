@@ -20,7 +20,7 @@ public class Cylindre extends Objet3D{
 	System.out.println("centreBas ("+centreBas.getX()+" "+centreBas.getY()+" "+centreBas.getZ()+")" );
 	rayon=rrayon;
 	hauteur=hhauteur;
-	genereMaillage();	
+	genereMaillage();
     }
 
     public Cylindre(Couleur couleur, Point3D ccentreBas, double rrayon, double hhauteur) {
