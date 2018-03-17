@@ -16,18 +16,18 @@ class Main {
 		Fenetre f = new Fenetre("Mon appli MG3D", 1080, 720);
 		Clavier clavier = f.getClavier();
 		Camera cam = f.getCamera();
-		
-		cam.setPosition(new Point3D(0, 1, 0));
+		f.activerLignes(true);
+		cam.setPosition(new Point3D(0, 2, 0));
 		
 		float vitesse = 0.2f;
 		float sensi = 1.5f;
-		int ouiNon = 0;
+		int isActivated = 1;
 		
-		Cylindre c = new Cylindre(new Point3D(0, 0, -15), 1, 2);
+		Cylindre c = new Cylindre(new Point3D(-10, 0, -15), 1, 2);
 		c.setCouleur(Couleur.MAGENTA);
 		f.ajouter(c);
 		
-		Cylindre c2 = new Cylindre(new Point3D(0, 2, -13), 1, 2);
+		Cylindre c2 = new Cylindre(new Point3D(-10, 0, -11), 1, 2);
 		c2.setCouleur(Couleur.ORANGE);
 		f.ajouter(c2);
 		
@@ -56,17 +56,18 @@ class Main {
 			/*** Activer les lignes ou non ***/
 			
 			if ( clavier.getEntreeTape() ){
-				if ( ouiNon % 2 == 0){
+				if ( isActivated % 2 == 0){
 					f.activerLignes(true);
 				}else{
 					f.activerLignes(false);
 				}
-				ouiNon++;
+				isActivated++;
+				System.out.println("GETBB = "+isActivated);
 			}
 			
 			/*** Intersection en cours... ***/
 			if (clavier.getEspaceTape()) {
-				c.translater(0, 2, 2);
+				c.translater(0, 0, 2);
 				
 				if (c.intersectionRapide(c2)){
 					c2.setCouleur(Couleur.VERT);
@@ -74,6 +75,10 @@ class Main {
 					c2.setCouleur(Couleur.ROUGE);
 				}
 				System.out.println("INTERSECTION = "+c.intersectionRapide(c2));
+			}
+			
+			if (clavier.getETape()){
+				f.snapShot();
 			}
 
 			/*** DEPLACEMENTS ***/

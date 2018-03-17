@@ -43,12 +43,4 @@ public class BoiteEnglobante {
 		return max;
 	}
 
-	public void setMin(Point3D min) {
-		this.min = min;
-	}
-
-	public void setMax(Point3D max) {
-		this.max = max;
-	}
-
 }
