@@ -43,6 +43,7 @@ import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.glu.GLU;
 
 import MG3D.geometrie.Objet3D;
+import MG3D.geometrie.Point3D;
 
 
 /**
@@ -61,8 +62,8 @@ class Panneau extends GLCanvas implements GLEventListener{
     private Camera cam;
     private GLU glu = new GLU();
     private GL2 gl;
-	private GLCanvas glcanvas;
-	private float h;
+    private GLCanvas glcanvas;
+    private float h;
 	
     // Constructeur //
 	
@@ -73,10 +74,10 @@ class Panneau extends GLCanvas implements GLEventListener{
 	super();
 	cam = new Camera();
 	GLProfile profile = GLProfile.get(GLProfile.GL2);
-    GLCapabilities capabilities = new GLCapabilities(profile);
+	GLCapabilities capabilities = new GLCapabilities(profile);
     	
-    glcanvas = new GLCanvas(capabilities);
-    glcanvas.display();
+	glcanvas = new GLCanvas(capabilities);
+	glcanvas.display();
 	a = new ArrayList < Objet3D > ();
     }
 	
@@ -89,9 +90,9 @@ class Panneau extends GLCanvas implements GLEventListener{
 	super();
 	this.cam = new Camera();
 	GLProfile profile = GLProfile.get(GLProfile.GL2);
-    GLCapabilities capabilities = new GLCapabilities(profile);
+	GLCapabilities capabilities = new GLCapabilities(profile);
     	
-    glcanvas = new GLCanvas(capabilities);
+	glcanvas = new GLCanvas(capabilities);
 	this.a = new ArrayList<Objet3D>(a);
     }
 	
@@ -100,14 +101,14 @@ class Panneau extends GLCanvas implements GLEventListener{
      * @param p Zone d'affichage à copier.
      */
     public Panneau ( Panneau p ) {
-    super();
-    GLProfile profile = GLProfile.get(GLProfile.GL2);
-    GLCapabilities capabilities = new GLCapabilities(profile);
-    glcanvas = new GLCanvas(capabilities);
+	super();
+	GLProfile profile = GLProfile.get(GLProfile.GL2);
+	GLCapabilities capabilities = new GLCapabilities(profile);
+	glcanvas = new GLCanvas(capabilities);
 	setPreferredSize(new Dimension(p.getWidth(),p.getHeight()));
 	setSize(new Dimension(p.getWidth(),p.getHeight()));
 	a = p.getA();
-	cam = p.getCamera();
+	cam = new Camera (p.getCamera());
     }
 	
     // Accesseurs //
@@ -150,14 +151,14 @@ class Panneau extends GLCanvas implements GLEventListener{
      */
     public void paint ( GL2 gl ) {
 	// On parcourt la ArrayList via une boucle for() qui affiche un à un le contenu de a.
-		for ( int i = 0; i < a.size(); i++ ){
-		    a.get( i ).afficher( gl );
-		}
+	for ( int i = 0; i < a.size(); i++ ){
+	    a.get( i ).afficher( gl );
+	}
     }
     
-    public void majCam(GL2 gl){
+    /*public void majCam(GL2 gl){
     	cam.deplacerCamera(gl);
-    }
+	}*/
     
     /**
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/Component.html#repaint()" target="_blank">Repaint de Component</a>
@@ -213,72 +214,70 @@ class Panneau extends GLCanvas implements GLEventListener{
 	return retour;
     }
 
-	@Override
-	public void display(GLAutoDrawable drawable) {
-		gl = drawable.getGL().getGL2();
-		gl.glClearColor( 0.5f, 0.5f, 0.5f, 1.0f );
-		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+    @Override
+    public void display(GLAutoDrawable drawable) {
+	gl = drawable.getGL().getGL2();
+	gl.glClearColor( 0.5f, 0.5f, 0.5f, 1.0f );
+	gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
 		
-//		gl.glMatrixMode(GL2.GL_PROJECTION);
-//		gl.glLoadIdentity();
-		
-//		glu.gluPerspective(45.0f, h, 1.0, 100.0);
-		
-		majCam(gl);
-		
-		
-		
-		gl.glMatrixMode(GL2.GL_MODELVIEW);
-		gl.glLoadIdentity();
-		
-		cam.calculCam();
-		
-		glu.gluLookAt(cam.getPosition().getX(), cam.getPosition().getY(), cam.getPosition().getZ(), 
-						cam.getAngleX(), cam.getAngleY(), cam.getAngleZ(),
-						0.0f, 1.0f, 0.0f);
-		
-		
-		paint(gl);
-		
-		gl.glFlush();
-		
-		
-	}
+	gl.glMatrixMode(GL2.GL_PROJECTION);
+	gl.glLoadIdentity();
 
-	@Override
-	public void dispose(GLAutoDrawable drawable) {
-		// TODO Auto-generated method stub
-	}
+	glu.gluPerspective(45.0, h, 0.1, 50);
+		
+		
+	gl.glMatrixMode(GL2.GL_MODELVIEW);
+	gl.glLoadIdentity();
 
-	@Override
-	public void init(GLAutoDrawable drawable) {
-		final GL2 gl = drawable.getGL().getGL2();
-		gl.glShadeModel(GL2.GL_SMOOTH);
-		gl.glClearColor(0f, 0f, 0f, 0f);
-		gl.glClearDepth(1.0f);
-		gl.glEnable(GL2.GL_DEPTH_TEST);
-		gl.glDepthFunc(GL2.GL_LEQUAL);
-		gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
-	}
+	Point3D posCamera=cam.getPosition();
+	Point3D pointRegarde=cam.pointRegarde();
 
-	@Override
-	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-		final GL2 gl = drawable.getGL().getGL2();
-		if (height == 0) {
-			height = 1;
-		}
+	glu.gluLookAt(posCamera.getX(), posCamera.getY(), posCamera.getZ(), 
+		      pointRegarde.getX(), pointRegarde.getY(), pointRegarde.getZ(),
+		      0.0f, 1.0f, 0.0f);
 		
-		h = (float) width / (float) height;
-		gl.glViewport(0, 0, width, height);
-		gl.glMatrixMode(GL2.GL_PROJECTION);
-		gl.glLoadIdentity();
 		
-		glu.gluPerspective(45.0f, h, 1.0, 20.0);
-		gl.glTranslatef(0.0f, 0.0f, 0.0f);
+	paint(gl);
 		
-		gl.glMatrixMode(GL2.GL_MODELVIEW);
-		gl.glLoadIdentity();
+	gl.glFlush();
+		
+		
+    }
+
+    @Override
+    public void dispose(GLAutoDrawable drawable) {
+	// TODO Auto-generated method stub
+    }
+
+    @Override
+    public void init(GLAutoDrawable drawable) {
+	final GL2 gl = drawable.getGL().getGL2();
+	gl.glShadeModel(GL2.GL_SMOOTH);
+	gl.glClearColor(0f, 0f, 0f, 0f);
+	gl.glClearDepth(1.0f);
+	gl.glEnable(GL2.GL_DEPTH_TEST);
+	gl.glDepthFunc(GL2.GL_LEQUAL);
+	gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
+    }
+
+    @Override
+    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+	final GL2 gl = drawable.getGL().getGL2();
+	if (height == 0) {
+	    height = 1;
 	}
+		
+	h = (float) width / (float) height;
+	gl.glViewport(0, 0, width, height);
+	gl.glMatrixMode(GL2.GL_PROJECTION);
+	gl.glLoadIdentity();
+		
+	glu.gluPerspective(45.0f, h, 1.0, 20.0);
+	gl.glTranslatef(0.0f, 0.0f, 0.0f);
+		
+	gl.glMatrixMode(GL2.GL_MODELVIEW);
+	gl.glLoadIdentity();
+    }
 	
 	
 	

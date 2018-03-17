@@ -1,66 +1,80 @@
 package MG3D;
 
-import com.jogamp.opengl.GL2;
-
 import MG3D.geometrie.Point3D;
-import MG3D.geometrie.Vecteur3D;
 
 public class Camera {
 	
-	private Point3D position;
-	private float angleX, angleY, angleZ;
+    private Point3D position;
+    private float angleHB, angleGD;
 	
-	public Camera(){
-		position = new Point3D(0, 0, 0);
-		angleX = 0.0f;
-		angleY = 0.0f;
-		angleZ = 0.0f;
-	}
-	
-	public void deplacerCamera(GL2 gl){
-		// vide du coup
-	}
-	
-	public void calculCam(){
-		position.setX(position.getX()+Math.cos(90-angleX));
-		position.setY(position.getY()+Math.sin(90-angleY));
-	}
-	
-	/*** GETTERS ***/
-	
-	public Point3D getPosition() {
-		return position;
-	}
+    public Camera(){
+	position = new Point3D(0, 0, 0);
+	angleHB = 0.0f;
+	angleGD = 0.0f;
+    }
 
-	public float getAngleX() {
-		return angleX;
-	}
+    public Camera(Camera c){
+	position = new Point3D(c.getPosition());
+	angleHB = c.angleHB;
+	angleGD = c.angleGD;
+    }
 
-	public float getAngleY() {
-		return angleY;
-	}
+    public void decalerGauche(float distance){
+	//TODO
+    }
 
-	public float getAngleZ() {
-		return angleZ;
-	}
+    public void decalerDroite(float distance){
+	//TODO
+    }
 	
-	/*** SETTERS ***/
+    public void deplacerVersRegard(float distance){
+	double dx,dz;
+	dx=Math.cos(Math.toRadians(90-angleGD))*distance;
+	dz=-Math.sin(Math.toRadians(90-angleGD))*distance;
+	position.setX(position.getX()+dx);
+	position.setZ(position.getZ()+dz);
+    }
+
+    public Point3D pointRegarde(){
+	//TODO gérer l'orientation haut-bas
+	double x,y=position.getY(),z;
+	x=position.getX()+Math.cos(Math.toRadians(90-angleGD));
+	z=position.getZ()-Math.sin(Math.toRadians(90-angleGD));
+	return new Point3D(x,y,z);
+    }
+    
 	
-	public void setPosition(Point3D position) {
-		this.position = position;
-	}
+    /*** GETTERS ***/
+	
+    public Point3D getPosition() {
+	return position;
+    }
 
-	public void setAngleX(float angleX) {
-		this.angleX = angleX;
-	}
+    public float getAngleHB() {
+	return angleHB;
+    }
 
-	public void setAngleY(float angleY) {
-		this.angleY = angleY;
-	}
+    public float getAngleGD() {
+	return angleGD;
+    }
+	
+    /*** SETTERS ***/
+	
+    public void setPosition(Point3D position) {
+	this.position = new Point3D(position);
+    }
 
-	public void setAngleZ(float angleZ) {
-		this.angleZ = angleZ;
-	}
+    public void setAngleHB(float angleHB) {
+	this.angleHB = angleHB;
+    }
+
+    public void setAngleGD(float angleGD) {
+	this.angleGD = angleGD;
+    }
+
+    public String toString(){
+	return new String("Camera en "+position+" regardant vers "+pointRegarde());
+    }
 	
 	
 }
