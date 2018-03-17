@@ -14,9 +14,9 @@ public class Capsule extends Objet3D {
 		super(couleur);
 	}
 
-public Capsule(Capsule c){
-//TODO
-}
+	public Capsule(Capsule c) {
+		// TODO
+	}
 
 	@Override
 	protected void genereMaillage() {

@@ -64,6 +64,7 @@ class Panneau extends GLCanvas implements GLEventListener{
     private GL2 gl;
     private GLCanvas glcanvas;
     private float h;
+    private boolean actif;
 	
     // Constructeur //
 	
@@ -79,6 +80,7 @@ class Panneau extends GLCanvas implements GLEventListener{
 	glcanvas = new GLCanvas(capabilities);
 	glcanvas.display();
 	a = new ArrayList < Objet3D > ();
+	actif = false;
     }
 	
     /**
@@ -94,6 +96,7 @@ class Panneau extends GLCanvas implements GLEventListener{
     	
 	glcanvas = new GLCanvas(capabilities);
 	this.a = new ArrayList<Objet3D>(a);
+	this.actif = false;
     }
 	
     /**
@@ -109,13 +112,14 @@ class Panneau extends GLCanvas implements GLEventListener{
 	setSize(new Dimension(p.getWidth(),p.getHeight()));
 	a = p.getA();
 	cam = new Camera (p.getCamera());
+	actif = getActif();
     }
 	
     // Accesseurs //
 	
     // Getter //
 	
-    /**
+	/**
      * Retourne la liste de formes dans la zone d'affichage.
      * <strong>Attention,</strong> la liste de formes retournée est l'ensemble des formes ajoutées à la zone d'affichage même si celle-ci n'a pas été rafraichie.
      * @return a ArrayList de Objet3D.
@@ -131,6 +135,10 @@ class Panneau extends GLCanvas implements GLEventListener{
     	return cam;
     }
     
+    public boolean getActif() {
+		return actif;
+	}
+    
     // Setter //
 	
     /**
@@ -139,9 +147,12 @@ class Panneau extends GLCanvas implements GLEventListener{
      * @see Objet3D
      */
     public void setA ( ArrayList < Objet3D > a ) {
-		
-	this.a = a;
+    	this.a = a;
     }
+    
+    public void setActif(boolean aactif) {
+		this.actif = aactif;
+	}
 	
     // Méthodes //
 	
@@ -152,7 +163,7 @@ class Panneau extends GLCanvas implements GLEventListener{
     public void paint ( GL2 gl ) {
 	// On parcourt la ArrayList via une boucle for() qui affiche un à un le contenu de a.
 	for ( int i = 0; i < a.size(); i++ ){
-	    a.get( i ).afficher( gl );
+	    a.get( i ).afficher( gl, getActif() );
 	}
     }
     

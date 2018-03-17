@@ -253,6 +253,10 @@ public class Fenetre extends JFrame {
     public Camera getCamera(){
     	return p.getCamera();
     }
+    
+    public void activerLignes(boolean actif){
+    	p.setActif(actif);
+    }
 
     /**
      * Permet l'affichage ou non du nombre d'image par seconde dans la barre de titre.
