@@ -27,7 +27,7 @@ class Main {
 		c.setCouleur(Couleur.MAGENTA);
 		f.ajouter(c);
 		
-		Cylindre c2 = new Cylindre(new Point3D(-10, 0, -11), 1, 2);
+		Cylindre c2 = new Cylindre(new Point3D(-10, 0, -10), 1, 2);
 		c2.setCouleur(Couleur.ORANGE);
 		f.ajouter(c2);
 		
@@ -68,15 +68,16 @@ class Main {
 			/*** Intersection en cours... ***/
 			if (clavier.getEspaceTape()) {
 				c.translater(0, 0, 2);
-				
-				if (c.intersectionRapide(c2)){
-					c2.setCouleur(Couleur.VERT);
-				}else{
-					c2.setCouleur(Couleur.ROUGE);
-				}
 				System.out.println("INTERSECTION = "+c.intersectionRapide(c2));
 			}
 			
+			if (c.intersectionRapide(c2)){
+				c2.setCouleur(Couleur.VERT);
+			}else{
+				c2.setCouleur(Couleur.ROUGE);
+			}
+			
+			/*** SNAAAAAP ***/
 			if (clavier.getETape()){
 				f.snapShot();
 			}
