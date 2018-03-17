@@ -20,11 +20,19 @@ public class Camera {
     }
 
     public void decalerGauche(float distance){
-	//TODO
+	double dx,dz;
+	dx=Math.cos(Math.toRadians(90-angleGD))*distance;
+	dz=-Math.sin(Math.toRadians(90-angleGD))*distance;
+	position.setX(position.getX()+dz);
+	position.setZ(position.getZ()+dx);
     }
 
     public void decalerDroite(float distance){
-	//TODO
+	double dx,dz;
+	dx=Math.cos(Math.toRadians(90-angleGD))*distance;
+	dz=-Math.sin(Math.toRadians(90-angleGD))*distance;
+	position.setX(position.getX()-dz);
+	position.setZ(position.getZ()+dx);
     }
 	
     public void deplacerVersRegard(float distance){
