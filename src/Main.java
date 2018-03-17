@@ -69,8 +69,8 @@ class Main {
 				c.translater(0, 2, 2);
 				c.setCouleur(Couleur.CYAN);
 				
-				System.out.println("INTERSECTION = "+c.getBe().intersection(c2.getBe()));
-				if (c.getBe().intersection(c2.getBe())){
+				System.out.println("INTERSECTION = "+c.intersectionRapide(c2));
+				if (c.intersectionRapide(c2)){
 					c2.setCouleur(Couleur.VERT);
 				}else{
 					c2.setCouleur(Couleur.ROUGE);
