@@ -7,6 +7,7 @@ import MG3D.Fenetre;
 import MG3D.geometrie.Couleur;
 import MG3D.geometrie.Cube;
 import MG3D.geometrie.Cylindre;
+import MG3D.geometrie.Maillage;
 import MG3D.geometrie.Point3D;
 
 class Main {
@@ -17,7 +18,7 @@ class Main {
 		Camera cam = f.getCamera();
 		Point3D origine = new Point3D();
 		Cylindre c = new Cylindre(origine, 1, 2);
-		Cube cube = new Cube(Couleur.JAUNE, origine, 1);
+//		Maillage m = new Maillage("./fic3D/heptoroid.off");
 		
 		ArrayList<Cube> listCube = new ArrayList<>();
 		
@@ -25,16 +26,14 @@ class Main {
 		// A droite et en bas, on augmente les valeurs
 		float vitesse = 0.2f;
 		float sensi = 1.5f;
-		float vitGD = cam.getDeplacementGD();
-		float vitHB = cam.getDeplacementHB();
-		float orientGD = cam.getDirectionGD();
-		float orientHB = cam.getDirectionHB();
 		
-		cube.translater(1, 0, -10);
-		c.translater(-1, 0, -10);
+		c.translater(-3, 0, 10);
 		c.setCouleur(Couleur.MAGENTA);
-//		f.ajouter(c);
-//		f.ajouter(cube);
+		f.ajouter(c);
+		
+//		m.setCouleur(Couleur.ORANGE);
+//		f.ajouter(m);
+		
 		
 		for (int i = 0; i<5; i++){
 			listCube.add(new Cube(Couleur.BLANC, origine, 2));
@@ -63,57 +62,58 @@ class Main {
 				}
 			}
 			
+			// pour boucler la rotation de la camera
+//			if ( orientGD >= 360.0f || orientGD <= -360.0f){
+//				orientGD = 0.0f;
+//			}
+			
 			/*** DEPLACEMENTS ***/
 			// avant
 			if ( clavier.getZEnfoncee() ){
-				vitHB+=vitesse;
-				cam.setDeplacementHB(vitHB);
-				System.out.println("J'avance..."+cam.getDeplacementHB());
+				cam.getPosition().setX(cam.getPosition().getX()+vitesse);
+				System.out.println("J'avance..."+cam.getPosition().getX());
 			}
 			// arriere
 			if ( clavier.getSEnfoncee() ){
-				vitHB-=vitesse;
-				cam.setDeplacementHB(vitHB);
-				System.out.println("Je recule..."+cam.getDeplacementHB());
+				cam.getPosition().setX(cam.getPosition().getX()-vitesse);
+				System.out.println("Je recule..."+cam.getPosition().getX());
 			}
 			// droite
 			if ( clavier.getDEnfoncee() ){
-				vitGD-=vitesse;
-				cam.setDeplacementGD(vitGD);
-				System.out.println("Droite..."+cam.getDeplacementGD());
+				cam.getPosition().setY(cam.getPosition().getY()+vitesse);
+				System.out.println("Je vais a droite..."+cam.getPosition().getY());
 			}
 			// gauche
 			if ( clavier.getQEnfoncee() ){
-				vitGD+=vitesse;
-				cam.setDeplacementGD(vitGD);
-				System.out.println("Gauche..."+cam.getDeplacementGD());
+				cam.getPosition().setY(cam.getPosition().getY()-vitesse);
+				System.out.println("Je vais a gauche..."+cam.getPosition().getY());
 			}
 			
 			/*** ORIENTATIONS / DIRECTIONS ***/
-			// orientation droite
-			if ( clavier.getDroiteEnfoncee() ){
-				orientGD+=sensi;
-				cam.setDirectionGD(orientGD);
-				System.out.println("Orientation Droite..."+cam.getDirectionGD());
-			}
-			// orientation gauche
-			if ( clavier.getGaucheEnfoncee() ){
-				orientGD-=sensi;
-				cam.setDirectionGD(orientGD);
-				System.out.println("Orientation Gauche..."+cam.getDirectionGD());
-			}
-			// orientation haut
-			if ( clavier.getHautEnfoncee() ){
-				orientHB-=sensi;
-				cam.setDirectionHB(orientHB);
-				System.out.println("Orientation Haut..."+cam.getDirectionHB());
-			}
-			// orientation bas
-			if ( clavier.getBasEnfoncee() ){
-				orientHB+=sensi;
-				cam.setDirectionHB(orientHB);
-				System.out.println("Orientation Bas..."+cam.getDirectionHB());
-			}
+//			// orientation droite
+//			if ( clavier.getDroiteEnfoncee() ){
+//				orientGD+=sensi;
+//				cam.setDirectionGD(orientGD);
+//				System.out.println("Orientation Droite..."+cam.getDirectionGD());
+//			}
+//			// orientation gauche
+//			if ( clavier.getGaucheEnfoncee() ){
+//				orientGD-=sensi;
+//				cam.setDirectionGD(orientGD);
+//				System.out.println("Orientation Gauche..."+cam.getDirectionGD());
+//			}
+//			// orientation haut
+//			if ( clavier.getHautEnfoncee() ){
+//				orientHB-=sensi;
+//				cam.setDirectionHB(orientHB);
+//				System.out.println("Orientation Haut..."+cam.getDirectionHB());
+//			}
+//			// orientation bas
+//			if ( clavier.getBasEnfoncee() ){
+//				orientHB+=sensi;
+//				cam.setDirectionHB(orientHB);
+//				System.out.println("Orientation Bas..."+cam.getDirectionHB());
+//			}
 			f.rafraichir();
 		}
 		

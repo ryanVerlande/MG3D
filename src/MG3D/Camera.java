@@ -2,74 +2,59 @@ package MG3D;
 
 import com.jogamp.opengl.GL2;
 
+import MG3D.geometrie.Point3D;
+
 public class Camera {
 	
-	private float position;
-	private float directionHB, directionGD;
-	private float deplacementHB, deplacementGD;
-	private float hauteur;
+	private Point3D position;
+	private float angleX, angleY, angleZ;
 	
 	public Camera(){
-		position = 0.0f;
-		deplacementHB = 0.0f;
-		deplacementGD = 0.0f;
-		directionHB = 0.0f;
-		directionGD = 0.0f;
-		hauteur = -1.0f;
+		position = new Point3D(0, 0, 0);
+		angleX = 0.0f;
+		angleY = 0.0f;
+		angleZ = 0.0f;
 	}
 	
 	public void deplacerCamera(GL2 gl){
-		gl.glRotatef(directionGD, 0.0f, 1.0f, 0.0f);
-		gl.glRotatef(directionHB, 1.0f, 0.0f, 0.0f);
-		gl.glTranslatef(deplacementGD, hauteur, deplacementHB);
+		// vide du coup
 	}
-
-	public float getHauteur() {
-		return hauteur;
-	}
-
-	public float getPosition() {
+	
+	/*** GETTERS ***/
+	
+	public Point3D getPosition() {
 		return position;
 	}
 
-	public float getDirectionHB() {
-		return directionHB;
+	public float getAngleX() {
+		return angleX;
 	}
 
-	public float getDirectionGD() {
-		return directionGD;
+	public float getAngleY() {
+		return angleY;
 	}
 
-	public float getDeplacementHB() {
-		return deplacementHB;
-	}
-
-	public float getDeplacementGD() {
-		return deplacementGD;
-	}
-
-	public void setPosition(float position) {
-		this.position = position;
+	public float getAngleZ() {
+		return angleZ;
 	}
 	
-	public void setHauteur(float hauteur) {
-		this.hauteur = hauteur;
+	/*** SETTERS ***/
+	
+	public void setPosition(Point3D position) {
+		this.position = position;
 	}
 
-	public void setDirectionHB(float directionHB) {
-		this.directionHB = directionHB;
+	public void setAngleX(float angleX) {
+		this.angleX = angleX;
 	}
 
-	public void setDirectionGD(float directionGD) {
-		this.directionGD = directionGD;
+	public void setAngleY(float angleY) {
+		this.angleY = angleY;
 	}
 
-	public void setDeplacementHB(float deplacementHB) {
-		this.deplacementHB = deplacementHB;
+	public void setAngleZ(float angleZ) {
+		this.angleZ = angleZ;
 	}
-
-	public void setDeplacementGD(float deplacementGD) {
-		this.deplacementGD = deplacementGD;
-	}
+	
 	
 }

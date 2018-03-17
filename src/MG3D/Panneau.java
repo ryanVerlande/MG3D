@@ -62,9 +62,6 @@ class Panneau extends GLCanvas implements GLEventListener{
     private GLU glu = new GLU();
     private GL2 gl;
 	private GLCanvas glcanvas;
-	private float gravite = 0.0f;
-	private float vitesse = 0.2f;
-	private float sensiH = 1.5f, sensiV = 1.0f;
 	private float h;
 	
     // Constructeur //
@@ -222,16 +219,20 @@ class Panneau extends GLCanvas implements GLEventListener{
 		gl.glClearColor( 0.5f, 0.5f, 0.5f, 1.0f );
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
 		
-		gl.glMatrixMode(GL2.GL_PROJECTION);
-		gl.glLoadIdentity();
-		
-		glu.gluPerspective(45.0f, h, 1.0, 100.0);
+//		gl.glMatrixMode(GL2.GL_PROJECTION);
+//		gl.glLoadIdentity();
+//		
+//		glu.gluPerspective(45.0f, h, 1.0, 100.0);
 		
 		majCam(gl);
 		
 		gl.glMatrixMode(GL2.GL_MODELVIEW);
 		gl.glLoadIdentity();
-				
+		
+		glu.gluLookAt(cam.getPosition().getX(), cam.getPosition().getY(), cam.getPosition().getZ(), 
+						cam.getAngleX(), cam.getAngleY(), cam.getAngleZ(),
+						0.0f, 1.0f, 0.0f);
+		
 		paint(gl);
 		
 		gl.glFlush();
@@ -268,7 +269,7 @@ class Panneau extends GLCanvas implements GLEventListener{
 		gl.glLoadIdentity();
 		
 		glu.gluPerspective(45.0f, h, 1.0, 20.0);
-		gl.glTranslatef(0.0f, 0.0f, cam.getDeplacementHB());
+		gl.glTranslatef(0.0f, 0.0f, 0.0f);
 		
 		gl.glMatrixMode(GL2.GL_MODELVIEW);
 		gl.glLoadIdentity();
