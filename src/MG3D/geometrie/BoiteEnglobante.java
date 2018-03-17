@@ -20,6 +20,8 @@ public class BoiteEnglobante {
 	}
 
 	public boolean intersection(BoiteEnglobante be) {
+		boolean collision = false;
+		
 		if (
 			 be.getMin().getX() > this.getMax().getX() ||
 		     be.getMin().getY() > this.getMax().getY() ||
@@ -28,9 +30,9 @@ public class BoiteEnglobante {
 		     be.getMax().getY() < this.getMin().getY() ||
 		     be.getMax().getZ() < this.getMin().getZ()
 		)
-			return true;
+			collision = true;
 		
-		return false;
+		return collision;
 	}
 
 	public Point3D getMin() {

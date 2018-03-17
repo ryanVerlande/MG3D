@@ -143,12 +143,12 @@ public abstract class Objet3D{
      * Méthode de permettant d'effectuer un test d'intersection rapide, basé sur les boites englobantes.<br />
      * En appelant cette méthode, l'utilisateur n'appelle pas les méthodes d'intersection précises des sous-classes mais celle faisant appel aux boites englobantes.<br />
      * Cette méthode est <em>final</em> et ne peut donc pas être redéfinie.
-     * @param d Dessin.
+     * @param d Objet3D.
      * @return Vrai si la méthode détecte une intersection, faux sinon.
      */
     public final boolean intersectionRapide ( Objet3D d ) {
 		
-	return getBe().intersection( d.getBe() );
+	return this.getBe().intersection( d.getBe() );
     }
 
     /**
