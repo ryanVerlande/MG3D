@@ -223,9 +223,8 @@ class Panneau extends GLCanvas implements GLEventListener{
 	gl.glMatrixMode(GL2.GL_PROJECTION);
 	gl.glLoadIdentity();
 
-	glu.gluPerspective(45.0, h, 0.1, 50);
-		
-		
+	glu.gluPerspective(45.0, h, 0.1, 100);
+	
 	gl.glMatrixMode(GL2.GL_MODELVIEW);
 	gl.glLoadIdentity();
 
