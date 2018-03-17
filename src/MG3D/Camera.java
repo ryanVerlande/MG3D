@@ -20,6 +20,10 @@ public class Camera {
 		// vide du coup
 	}
 	
+	public void calculCam(){
+		
+	}
+	
 	/*** GETTERS ***/
 	
 	public Point3D getPosition() {
