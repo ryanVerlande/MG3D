@@ -229,9 +229,12 @@ class Panneau extends GLCanvas implements GLEventListener{
 		gl.glMatrixMode(GL2.GL_MODELVIEW);
 		gl.glLoadIdentity();
 		
+		cam.calculCam();
+		
 		glu.gluLookAt(cam.getPosition().getX(), cam.getPosition().getY(), cam.getPosition().getZ(), 
 						cam.getAngleX(), cam.getAngleY(), cam.getAngleZ(),
 						0.0f, 1.0f, 0.0f);
+		
 		
 		paint(gl);
 		

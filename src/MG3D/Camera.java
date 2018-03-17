@@ -3,6 +3,7 @@ package MG3D;
 import com.jogamp.opengl.GL2;
 
 import MG3D.geometrie.Point3D;
+import MG3D.geometrie.Vecteur3D;
 
 public class Camera {
 	
