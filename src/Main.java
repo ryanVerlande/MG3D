@@ -21,14 +21,14 @@ class Main {
 		
 		float vitesse = 0.2f;
 		float sensi = 1.5f;
-		int ouiNon = 1;
+		int ouiNon = 0;
 		
 		Cylindre c = new Cylindre(new Point3D(0, 0, -15), 1, 2);
 		c.setCouleur(Couleur.MAGENTA);
 		f.ajouter(c);
 		
 		Cylindre c2 = new Cylindre(new Point3D(0, 2, -13), 1, 2);
-		c2.setCouleur(Couleur.MAGENTA);
+		c2.setCouleur(Couleur.ORANGE);
 		f.ajouter(c2);
 		
 		ArrayList<Cube> listCube = new ArrayList<>();
@@ -56,25 +56,24 @@ class Main {
 			/*** Activer les lignes ou non ***/
 			
 			if ( clavier.getEntreeTape() ){
-				ouiNon++;
 				if ( ouiNon % 2 == 0){
 					f.activerLignes(true);
 				}else{
 					f.activerLignes(false);
 				}
+				ouiNon++;
 			}
 			
 			/*** Intersection en cours... ***/
 			if (clavier.getEspaceTape()) {
 				c.translater(0, 2, 2);
-				c.setCouleur(Couleur.CYAN);
 				
-				System.out.println("INTERSECTION = "+c.intersectionRapide(c2));
 				if (c.intersectionRapide(c2)){
 					c2.setCouleur(Couleur.VERT);
 				}else{
 					c2.setCouleur(Couleur.ROUGE);
 				}
+				System.out.println("INTERSECTION = "+c.intersectionRapide(c2));
 			}
 
 			/*** DEPLACEMENTS ***/
