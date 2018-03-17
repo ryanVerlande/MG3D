@@ -22,7 +22,8 @@ public class Camera {
 	}
 	
 	public void calculCam(){
-		
+		position.setX(Math.cos(90-angleX));
+		position.setY(Math.cos(90-angleY));
 	}
 	
 	/*** GETTERS ***/

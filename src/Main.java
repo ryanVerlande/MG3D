@@ -70,7 +70,7 @@ class Main {
 			/*** DEPLACEMENTS ***/
 			// avant
 			if ( clavier.getZEnfoncee() ){
-				cam.getPosition().setX(cam.getPosition().getX()+vitesse);
+				cam.getPosition().setX(cam.getPosition().getX()*vitesse);
 				System.out.println("J'avance..."+cam.getPosition().getX());
 			}
 			// arriere
@@ -90,30 +90,26 @@ class Main {
 			}
 			
 			/*** ORIENTATIONS / DIRECTIONS ***/
-//			// orientation droite
-//			if ( clavier.getDroiteEnfoncee() ){
-//				orientGD+=sensi;
-//				cam.setDirectionGD(orientGD);
-//				System.out.println("Orientation Droite..."+cam.getDirectionGD());
-//			}
-//			// orientation gauche
-//			if ( clavier.getGaucheEnfoncee() ){
-//				orientGD-=sensi;
-//				cam.setDirectionGD(orientGD);
-//				System.out.println("Orientation Gauche..."+cam.getDirectionGD());
-//			}
-//			// orientation haut
-//			if ( clavier.getHautEnfoncee() ){
-//				orientHB-=sensi;
-//				cam.setDirectionHB(orientHB);
-//				System.out.println("Orientation Haut..."+cam.getDirectionHB());
-//			}
-//			// orientation bas
-//			if ( clavier.getBasEnfoncee() ){
-//				orientHB+=sensi;
-//				cam.setDirectionHB(orientHB);
-//				System.out.println("Orientation Bas..."+cam.getDirectionHB());
-//			}
+			// orientation droite
+			if ( clavier.getDroiteEnfoncee() ){
+				cam.setAngleX(cam.getAngleX()+sensi);
+				System.out.println("Je regarde a droite..."+cam.getAngleX());
+			}
+			// orientation gauche
+			if ( clavier.getGaucheEnfoncee() ){
+				cam.setAngleX(cam.getAngleX()-sensi);
+				System.out.println("Je regarde a gauche..."+cam.getAngleX());
+			}
+			// orientation haut
+			if ( clavier.getHautEnfoncee() ){
+				cam.setAngleY(cam.getAngleY()-sensi);
+				System.out.println("Je regarde en haut..."+cam.getAngleY());
+			}
+			// orientation bas
+			if ( clavier.getBasEnfoncee() ){
+				cam.setAngleY(cam.getAngleY()+sensi);
+				System.out.println("Je regarde en bas..."+cam.getAngleY());
+			}
 			f.rafraichir();
 		}
 		
