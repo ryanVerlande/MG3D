@@ -63,9 +63,9 @@ class Main {
 			}
 			
 			// pour boucler la rotation de la camera
-//			if ( orientGD >= 360.0f || orientGD <= -360.0f){
-//				orientGD = 0.0f;
-//			}
+			if ( cam.getAngleX() >= 360.0f || cam.getAngleX() <= -360.0f){
+				cam.setAngleX(0.0f);
+			}
 			
 			/*** DEPLACEMENTS ***/
 			// avant
@@ -75,17 +75,17 @@ class Main {
 			}
 			// arriere
 			if ( clavier.getSEnfoncee() ){
-				cam.getPosition().setX(cam.getPosition().getX()-vitesse);
+				cam.getPosition().setX(cam.getPosition().getX()*vitesse);
 				System.out.println("Je recule..."+cam.getPosition().getX());
 			}
 			// droite
 			if ( clavier.getDEnfoncee() ){
-				cam.getPosition().setY(cam.getPosition().getY()+vitesse);
+				cam.getPosition().setY(cam.getPosition().getY()*vitesse);
 				System.out.println("Je vais a droite..."+cam.getPosition().getY());
 			}
 			// gauche
 			if ( clavier.getQEnfoncee() ){
-				cam.getPosition().setY(cam.getPosition().getY()-vitesse);
+				cam.getPosition().setY(cam.getPosition().getY()*vitesse);
 				System.out.println("Je vais a gauche..."+cam.getPosition().getY());
 			}
 			
