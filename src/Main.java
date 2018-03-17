@@ -25,7 +25,7 @@ class Main {
 		// A gauche et en haut, on diminue les valeurs
 		// A droite et en bas, on augmente les valeurs
 		float vitesse = 0.2f;
-		float sensi = 1.5f;
+		float sensi = 1.0f;
 		
 		c.translater(-3, 0, 10);
 		c.setCouleur(Couleur.MAGENTA);
