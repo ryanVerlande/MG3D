@@ -21,9 +21,15 @@ public class BoiteEnglobante {
 
 	public boolean intersection(BoiteEnglobante be) {
 		// TODO
-		if ( be.getMin().getX() > min.getX() ){
+		if ( be.getMin().getX() > this.getMax().getX() ||
+			     be.getMin().getY() > this.getMax().getY() ||
+			     be.getMax().getZ() > this.getMin().getZ() ||
+			     be.getMax().getX() < this.getMin().getX() ||
+			     be.getMax().getY() < this.getMin().getY() ||
+			     be.getMax().getZ() < this.getMin().getZ()
+		)
 			return true;
-		}
+		
 		return false;
 	}
 
