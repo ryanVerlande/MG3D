@@ -112,13 +112,13 @@ public abstract class Objet3D{
 	    sListe.get(i).setZ(sListe.get(i).getZ()+dz);
 	}
 	if ( getBe() != null ){
-		getBe().getMin().setX(getBe().getMin().getX()+dx);
-		getBe().getMin().setY(getBe().getMin().getY()+dy);
-		getBe().getMin().setZ(getBe().getMin().getZ()+dz);
+	    getBe().getMin().setX(getBe().getMin().getX()+dx);
+	    getBe().getMin().setY(getBe().getMin().getY()+dy);
+	    getBe().getMin().setZ(getBe().getMin().getZ()+dz);
 		
-		getBe().getMax().setX(getBe().getMax().getX()+dx);
-		getBe().getMax().setY(getBe().getMax().getY()+dy);
-		getBe().getMax().setZ(getBe().getMax().getZ()+dz);
+	    getBe().getMax().setX(getBe().getMax().getX()+dx);
+	    getBe().getMax().setY(getBe().getMax().getY()+dy);
+	    getBe().getMax().setZ(getBe().getMax().getZ()+dz);
 		
 	}
     }
@@ -188,8 +188,8 @@ public abstract class Objet3D{
      * Cette methode permet de repositionner les sommets pour que le centre de la boite englobante soit en (0,0,0).
      */
     /*public void recentrerMaillage(){
-	// TODO
-	}*/
+    // TODO
+    }*/
     
     /**
      * Subdivision des faces en 4 sans repositionnement des sommets
@@ -206,32 +206,32 @@ public abstract class Objet3D{
      * Subdivision de maillage par la méthode de Loop
      */
     /*public void loop(int nbSubdiv){
-	for(int i=0;i<nbSubdiv;i++)
-	    loop();
-    }
-    public void loop(){
-    }*/
+      for(int i=0;i<nbSubdiv;i++)
+      loop();
+      }
+      public void loop(){
+      }*/
 
     /**
      * Subdivision de maillage par la méthode Butterfly
      */
     /*public void butterfly(int nbSubdiv){
-	for(int i=0;i<nbSubdiv;i++)
-	    butterfly();
-    }
-    public void butterfly(){
-    }*/
+      for(int i=0;i<nbSubdiv;i++)
+      butterfly();
+      }
+      public void butterfly(){
+      }*/
 
-     /**
+    /**
      * Simplification de maillage
      */
     
     /*public void simplifier(){
-    }
+      }
 	
-    public void tourner(){
+      public void tourner(){
 		
-    }*/
+      }*/
 
     /**
      * Cette methode affiche la liste de sommets et de faces constituant le maillage
@@ -259,33 +259,40 @@ public abstract class Objet3D{
     }
     
     public void afficher(GL2 gl, boolean actif) { //(QQchose ici - le GLCanvas surement ou un truc qui s en approche)
-		for(int i=0;i<fListe.size();i++){
-			gl.glBegin(GL2.GL_TRIANGLES);
-			gl.glColor3f(1.0f, 1.0f, 1.0f);
-		    gl.glColor3f(getCouleur().getRed(), getCouleur().getGreen(), getCouleur().getBlue());
-		    gl.glVertex3d(sListe.get(fListe.get(i).getS1()).getX(),sListe.get(fListe.get(i).getS1()).getY(),sListe.get(fListe.get(i).getS1()).getZ());
-		    gl.glVertex3d(sListe.get(fListe.get(i).getS2()).getX(),sListe.get(fListe.get(i).getS2()).getY(),sListe.get(fListe.get(i).getS2()).getZ());
-		    gl.glVertex3d(sListe.get(fListe.get(i).getS3()).getX(),sListe.get(fListe.get(i).getS3()).getY(),sListe.get(fListe.get(i).getS3()).getZ());
-		    gl.glEnd();
-		}
-		if ( actif ){
-			for(int i=0;i<fListe.size();i++){
-				gl.glBegin(GL2.GL_LINES);
-				gl.glColor3f(0.0f, 0.0f, 0.0f);
-			    gl.glVertex3d(sListe.get(fListe.get(i).getS1()).getX(),sListe.get(fListe.get(i).getS1()).getY(),sListe.get(fListe.get(i).getS1()).getZ());
-			    gl.glVertex3d(sListe.get(fListe.get(i).getS2()).getX(),sListe.get(fListe.get(i).getS2()).getY(),sListe.get(fListe.get(i).getS2()).getZ());
-			    gl.glVertex3d(sListe.get(fListe.get(i).getS3()).getX(),sListe.get(fListe.get(i).getS3()).getY(),sListe.get(fListe.get(i).getS3()).getZ());
-			    gl.glEnd();
-			}
-			// decommenter et commenter la boucle du dessus pour afficher la boite englobante
-//			for(int i=0;i<fListe.size();i++){
-//				gl.glBegin(GL2.GL_LINES);
-//				gl.glColor3f(0.0f, 0.0f, 0.0f);
-//			    gl.glVertex3d(getBe().getMin().getX(),getBe().getMin().getY(), getBe().getMin().getZ());
-//			    gl.glVertex3d(getBe().getMax().getX(),getBe().getMax().getY(), getBe().getMax().getZ());
-//			    gl.glEnd();
-//			}
-		}
+	gl.glEnable(GL2.GL_POLYGON_OFFSET_FILL);
+	gl.glPolygonOffset(1.0f, 1.0f);
+	for(int i=0;i<fListe.size();i++){
+	    gl.glBegin(GL2.GL_TRIANGLES);
+	    gl.glColor3f(1.0f, 1.0f, 1.0f);
+	    gl.glColor3f(getCouleur().getRed(), getCouleur().getGreen(), getCouleur().getBlue());
+	    gl.glVertex3d(sListe.get(fListe.get(i).getS1()).getX(),sListe.get(fListe.get(i).getS1()).getY(),sListe.get(fListe.get(i).getS1()).getZ());
+	    gl.glVertex3d(sListe.get(fListe.get(i).getS2()).getX(),sListe.get(fListe.get(i).getS2()).getY(),sListe.get(fListe.get(i).getS2()).getZ());
+	    gl.glVertex3d(sListe.get(fListe.get(i).getS3()).getX(),sListe.get(fListe.get(i).getS3()).getY(),sListe.get(fListe.get(i).getS3()).getZ());
+	    gl.glEnd();
+	}
+	gl.glDisable(GL2.GL_POLYGON_OFFSET_FILL);
+	if ( actif ){
+	    gl.glEnable(GL2.GL_POLYGON_OFFSET_LINE);
+	    gl.glPolygonOffset(0.5f, 1.0f);
+	    for(int i=0;i<fListe.size();i++){
+		gl.glBegin(GL2.GL_LINES);
+		gl.glColor3f(0.0f, 0.0f, 0.0f);
+		gl.glVertex3d(sListe.get(fListe.get(i).getS1()).getX(),sListe.get(fListe.get(i).getS1()).getY(),sListe.get(fListe.get(i).getS1()).getZ());
+		gl.glVertex3d(sListe.get(fListe.get(i).getS2()).getX(),sListe.get(fListe.get(i).getS2()).getY(),sListe.get(fListe.get(i).getS2()).getZ());
+		gl.glVertex3d(sListe.get(fListe.get(i).getS3()).getX(),sListe.get(fListe.get(i).getS3()).getY(),sListe.get(fListe.get(i).getS3()).getZ());
+		gl.glVertex3d(sListe.get(fListe.get(i).getS1()).getX(),sListe.get(fListe.get(i).getS1()).getY(),sListe.get(fListe.get(i).getS1()).getZ());
+		gl.glEnd();
+	    }
+	    gl.glDisable(GL2.GL_POLYGON_OFFSET_LINE);
+	    // decommenter et commenter la boucle du dessus pour afficher la boite englobante
+	    //			for(int i=0;i<fListe.size();i++){
+	    //				gl.glBegin(GL2.GL_LINES);
+	    //				gl.glColor3f(0.0f, 0.0f, 0.0f);
+	    //			    gl.glVertex3d(getBe().getMin().getX(),getBe().getMin().getY(), getBe().getMin().getZ());
+	    //			    gl.glVertex3d(getBe().getMax().getX(),getBe().getMax().getY(), getBe().getMax().getZ());
+	    //			    gl.glEnd();
+	    //			}
+	}
 		    
     }
 
