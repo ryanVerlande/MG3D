@@ -8,6 +8,7 @@ import MG3D.geometrie.Couleur;
 import MG3D.geometrie.Cube;
 import MG3D.geometrie.Cylindre;
 import MG3D.geometrie.IcoSphere;
+import MG3D.geometrie.Parallelepipede;
 import MG3D.geometrie.Point3D;
 
 class Main {
@@ -27,15 +28,22 @@ class Main {
 		c.setCouleur(Couleur.MAGENTA);
 		f.ajouter(c);
 		
-		Cylindre c2 = new Cylindre(new Point3D(-10, 0, -10), 1, 2);
+		Cylindre c2 = new Cylindre(new Point3D(-10, 1, -10), 1, 2);
 		c2.setCouleur(Couleur.ORANGE);
 		f.ajouter(c2);
 		
 		ArrayList<Cube> listCube = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
 			listCube.add(new Cube(Couleur.BLANC, new Point3D(0, 0, -20), 2));
-			listCube.get(i).translater(i * 5, 0, -10);
+			listCube.get(i).translater(i*5, 0, 0);
 			f.ajouter(listCube.get(i));
+		}
+		
+		ArrayList<Parallelepipede> laTour = new ArrayList<>();
+		for (int i = 0; i < 5; i++) {
+			laTour.add(new Parallelepipede(Couleur.VERT, new Point3D(0, 0, 20), 2, 3, 4));
+			laTour.get(i).translater(0, i*3, 0);
+			f.ajouter(laTour.get(i));
 		}
 
 		listCube.get(0).setCouleur(Couleur.BLEU);

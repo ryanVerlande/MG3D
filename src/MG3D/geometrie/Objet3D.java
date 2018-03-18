@@ -269,21 +269,22 @@ public abstract class Objet3D{
 		    gl.glEnd();
 		}
 		if ( actif ){
-//			for(int i=0;i<fListe.size();i++){
-//				gl.glBegin(GL2.GL_LINES);
-//				gl.glColor3f(0.0f, 0.0f, 0.0f);
-//			    gl.glVertex3d(sListe.get(fListe.get(i).getS1()).getX(),sListe.get(fListe.get(i).getS1()).getY(),sListe.get(fListe.get(i).getS1()).getZ());
-//			    gl.glVertex3d(sListe.get(fListe.get(i).getS2()).getX(),sListe.get(fListe.get(i).getS2()).getY(),sListe.get(fListe.get(i).getS2()).getZ());
-//			    gl.glVertex3d(sListe.get(fListe.get(i).getS3()).getX(),sListe.get(fListe.get(i).getS3()).getY(),sListe.get(fListe.get(i).getS3()).getZ());
-//			    gl.glEnd();
-//			}
 			for(int i=0;i<fListe.size();i++){
 				gl.glBegin(GL2.GL_LINES);
 				gl.glColor3f(0.0f, 0.0f, 0.0f);
-			    gl.glVertex3d(getBe().getMin().getX(),getBe().getMin().getY(), getBe().getMin().getZ());
-			    gl.glVertex3d(getBe().getMax().getX(),getBe().getMax().getY(), getBe().getMax().getZ());
+			    gl.glVertex3d(sListe.get(fListe.get(i).getS1()).getX(),sListe.get(fListe.get(i).getS1()).getY(),sListe.get(fListe.get(i).getS1()).getZ());
+			    gl.glVertex3d(sListe.get(fListe.get(i).getS2()).getX(),sListe.get(fListe.get(i).getS2()).getY(),sListe.get(fListe.get(i).getS2()).getZ());
+			    gl.glVertex3d(sListe.get(fListe.get(i).getS3()).getX(),sListe.get(fListe.get(i).getS3()).getY(),sListe.get(fListe.get(i).getS3()).getZ());
 			    gl.glEnd();
 			}
+			// decommenter et commenter la boucle du dessus pour afficher la boite englobante
+//			for(int i=0;i<fListe.size();i++){
+//				gl.glBegin(GL2.GL_LINES);
+//				gl.glColor3f(0.0f, 0.0f, 0.0f);
+//			    gl.glVertex3d(getBe().getMin().getX(),getBe().getMin().getY(), getBe().getMin().getZ());
+//			    gl.glVertex3d(getBe().getMax().getX(),getBe().getMax().getY(), getBe().getMax().getZ());
+//			    gl.glEnd();
+//			}
 		}
 		    
     }
