@@ -354,5 +354,12 @@ public abstract class Objet3D{
     public Vecteur3D normaleFace(int indice){
 	return new Vecteur3D(0,0,0);
     }
+
+    /**
+     * Agrandir/réduire la taille de l'objet
+     * TODO
+     */
+    public void homotethie(double facteur){
+    }
     
 }
