@@ -1,0 +1,5 @@
+* Créer une FenetreVR
+* Créer une fenetre de visualisation d'objet seulement (maillage)
+* Ajouter la méthode de déplacement de la caméra où on fournit la position et l'endroit regardé
+* Rajouter du brouillard
+* Rajouter des lumières
