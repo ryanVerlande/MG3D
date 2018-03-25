@@ -1,43 +1,9 @@
-/*********************************************************************/
-/*                                                                   */
-/* Copyright 2012-2017 Rémi Synave, Anthony Desitter,                */
-/*                     Nicolas Dubrunfaut, Maxime Langa,             */
-/*                     Guillaume Langa                               */
-/*                                                                   */
-/* This file is part of MG2D.                                        */
-/* This library uses javazoom library piece of code                  */
-/* http://www.javazoom.net                                           */
-/* and can be found with this library (file jlayer1.0.1.tar.gz)      */
-/*                                                                   */
-/* MG2D is free software: you can redistribute it and/or modify      */
-/* it under the terms of the GNU General Public License as published */
-/* by the Free Software Foundation, either version 3 of the License, */
-/* or (at your option) any later version.                            */
-/*                                                                   */
-/* Foobar is distributed in the hope that it will be useful,         */
-/* but WITHOUT ANY WARRANTY; without even the implied warranty of    */
-/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the      */
-/* GNU General Public License for more details.                      */
-/*                                                                   */
-/* You should have received a copy of the GNU General Public License */
-/* along with MG2D. If not, see <http://www.gnu.org/licenses/>.      */
-/*                                                                   */
-/*********************************************************************/
-
 package MG3D.geometrie;
 
-import java.awt.Color;
 
-/**
- * Classe permettant de gérer les couleurs. Cette opération était laissée à la classe java.awt.Color mais dans un soucis de francisation du code, cette classe n'est qu'une passerelle vers java.awt.Color.<br />
- * Cette classe contient des constantes représentant les couleurs les plus utiliées.<br />
- * Vous pourrez toujours les éclaircir ou assombrir si elles en lui conviennent pas ou utiliser le constructeur prenant 3 entiers r, v et b en paramètre pour créer ses propres couleurs.
- * @author Rémi Synave
- * @version 2.2
- * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html" target="_blank">java.awt.Color</a>
- */
+public class Couleur{
 
-public class Couleur extends Color{
+    int rouge, vert, bleu;
     
     /**
      * Constantes à utiliser pour le noir.
@@ -96,7 +62,9 @@ public class Couleur extends Color{
      * Création de la couleur noire.
      */
     public Couleur(){
-	super(0,0,0);
+	rouge=0;
+	vert=0;
+	bleu=0;
     }
     
     /**
@@ -107,36 +75,17 @@ public class Couleur extends Color{
      * @param b Valeur de bleu.
      */
     public Couleur(int r, int v, int b){
-	super(r,v,b);
+	rouge=r;
+	vert=v;
+	bleu=b;
     }
 
-    /**
-     * Crée une couleur sur le modèle d'une couleur.<br />
-     * Remarque : Le paramètre peut être un objet de type java.awt.color.
-     * @param c Couleur à copier.
-     * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html" target="_blank">java.awt.Color</a>
-     */
-    public Couleur(Color c){
-	super(c.getRed(),c.getGreen(),c.getBlue());
+    public Couleur(Couleur c){
+	rouge=c.rouge;
+	vert=c.vert;
+	bleu=c.bleu;
     }
 
-    /**
-     * Création d'une nouvelle couleur qui assombrit la couleur courante.<br />
-     * Cette méthode est une simple passerelle vers la méthode darker de la classe java.awt.color.
-     * @return Nouvelle couleur plus sombre.
-     */
-    public Couleur assombrir(){
-	return new Couleur(super.darker());
-    }
-    
-    /**
-     * Création d'une nouvelle couleur qui éclaircit la couleur courante.<br />
-     * Cette méthode est une simple passerelle vers la méthode brighter de la classe java.awt.color.
-     * @return Nouvelle couleur plus claire.
-     */
-    public Couleur eclaircir(){
-	return new Couleur(super.brighter());
-    }
 
     /**
      * Test de la couleur afin de savoir si elle est blanche.
@@ -161,6 +110,18 @@ public class Couleur extends Color{
      */
     public String toString(){
 	return new String("(r,v,b)=("+getRed()+","+getGreen()+","+getBlue()+")");
+    }
+
+    public float getRed(){
+	return (float)(rouge/255.0);
+    }
+
+    public float getGreen(){
+	return (float)(vert/255.0);
+    }
+
+    public float getBlue(){
+	return (float)(bleu/255.0);
     }
 
     /**
