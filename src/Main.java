@@ -20,10 +20,10 @@ class Main {
 		
 		Camera cam = f.getCamera();
 		f.activerLignes(true);
-		cam.setPosition(new Point3D(0, 2, 0));
+		cam.setPosition(new Point3D(0, 10, 0));
 		
 		float vitesse = 0.2f;
-		float sensi = 1.5f;
+		float sensi = 1.0f;
 		int isActivated = 1;
 		
 		Cylindre c = new Cylindre(new Point3D(-10, 0, -15), 1, 2);
@@ -43,7 +43,7 @@ class Main {
 		
 		ArrayList<Parallelepipede> laTour = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
-			laTour.add(new Parallelepipede(Couleur.VERT, new Point3D(0, 0, 20), 2, 3, 4));
+			laTour.add(new Parallelepipede(Couleur.BLEU, new Point3D(0, 0, 20), 2, 3, 4));
 			laTour.get(i).translater(0, i*3, 0);
 			f.ajouter(laTour.get(i));
 		}
@@ -52,30 +52,102 @@ class Main {
 		listCube.get(1).setCouleur(Couleur.CYAN);
 		listCube.get(2).setCouleur(Couleur.ROUGE);
 		listCube.get(3).setCouleur(Couleur.JAUNE);
-		listCube.get(4).setCouleur(Couleur.VERT);
+		listCube.get(4).setCouleur(Couleur.BLEU);
 		
 		Cone cone = new Cone(Couleur.CYAN, new Point3D(60, 0, -20), 2, 5);
 		f.ajouter(cone);
 		
-		Maillage m = new Maillage("./fic3D/cow.off");
-		m.setCouleur(Couleur.ROUGE);
-		m.translater(30, -1, 10);
+		Maillage m = new Maillage("./fic3D/deathStar.off");
+		m.setCouleur(Couleur.JAUNE);
+		m.translater(5, 0, 0);
 		f.ajouter(m);
 		
-		ArrayList<Cube> maison = new ArrayList<>();
+		Maillage MG3D = new Maillage("./fic3D/3.off");
+		MG3D.setCouleur(Couleur.VERT);
+		MG3D.translater(28, 0, -200);
+		f.ajouter(MG3D);
 		
-		for (int i = 0; i<25; i++){
-			maison.add(new Cube(new Point3D(i, 0, -40), 2));
-			if ( i < 8 ){
-				maison.get(i).translater(i+2, 0, 0);
-			}
-			if ( i >= 8 ){
-				maison.get(i).translater(8+i, 0, -40-(i-2));
-			}
-			maison.get(i).setCouleur(Couleur.VERT);
-			f.ajouter(maison.get(i));
-		}
+		/***************************** M *****************************/
 		
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(0, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(0, 2, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(0, 4, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(0, 6, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(0, 8, -80), 2));
+		
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(2, 6, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(4, 4, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(6, 6, -80), 2));
+		
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(8, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(8, 2, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(8, 4, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(8, 6, -80), 2));
+		f.ajouter(new Cube(Couleur.ROUGE, new Point3D(8, 8, -80), 2));
+		
+		
+		/***************************** G *****************************/
+		
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(10, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(10, 2, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(10, 4, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(10, 6, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(10, 8, -80), 2));
+		
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(12, 8, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(14, 8, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(16, 8, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(18, 8, -80), 2));
+		
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(12, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(14, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(16, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(18, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(18, 2, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(18, 4, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(16, 4, -80), 2));
+		f.ajouter(new Cube(Couleur.BLEU, new Point3D(14, 4, -80), 2));
+		
+		
+		/***************************** 3 *****************************/
+		
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(28, 0, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(28, 2, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(28, 4, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(28, 6, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(28, 8, -80), 2));
+//		
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(26, 8, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(24, 8, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(22, 8, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(20, 8, -80), 2));
+//		
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(26, 0, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(24, 0, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(22, 0, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(20, 0, -80), 2));
+//		
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(26, 4, -80), 2));
+//		f.ajouter(new Cube(Couleur.VERT, new Point3D(24, 4, -80), 2));
+		
+		/***************************** D *****************************/
+		
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(30, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(30, 2, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(30, 4, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(30, 6, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(30, 8, -80), 2));
+		
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(32, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(34, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(36, 0, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(32, 8, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(34, 8, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(36, 8, -80), 2));
+		
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(38, 2, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(38, 4, -80), 2));
+		f.ajouter(new Cube(Couleur.GRIS, new Point3D(38, 6, -80), 2));
 		
 		// boucle de jeu
 		while (true) {

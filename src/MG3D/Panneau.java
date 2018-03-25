@@ -228,13 +228,13 @@ class Panneau extends GLCanvas implements GLEventListener{
     @Override
     public void display(GLAutoDrawable drawable) {
 	gl = drawable.getGL().getGL2();
-	gl.glClearColor( 0.5f, 0.5f, 0.5f, 1.0f );
+	gl.glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
 	gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
 		
 	gl.glMatrixMode(GL2.GL_PROJECTION);
 	gl.glLoadIdentity();
 
-	glu.gluPerspective(45.0, h, 0.1, 100);
+	glu.gluPerspective(45.0, h, 0.1, 200);
 	
 	gl.glMatrixMode(GL2.GL_MODELVIEW);
 	gl.glLoadIdentity();
