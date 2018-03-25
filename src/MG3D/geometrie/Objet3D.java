@@ -360,6 +360,22 @@ public abstract class Objet3D{
      * TODO
      */
     public void homotethie(double facteur){
+	if(be==null)
+	    calculeBoiteEnglobante();
+
+	// TODO utiliser des vecteur3D
+	
+	Point3D centre = new Point3D((be.getMin().getX()+be.getMax().getX())/2.0,(be.getMin().getY()+be.getMax().getY())/2.0,(be.getMin().getZ()+be.getMax().getZ())/2.0);
+
+	translater(-centre.getX(),-centre.getY(),-centre.getZ());
+
+	for(int i=0;i<getNbSommets();i++){
+	    sListe.get(i).setX(sListe.get(i).getX()*facteur);
+	    sListe.get(i).setY(sListe.get(i).getY()*facteur);
+	    sListe.get(i).setZ(sListe.get(i).getZ()*facteur);
+	}
+
+	translater(centre.getX(),centre.getY(),centre.getZ());
     }
     
 }
